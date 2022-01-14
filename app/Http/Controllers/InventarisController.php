@@ -14,7 +14,7 @@ class InventarisController extends Controller
      */
     public function index()
     {
-        return view('inventoris');
+        return view('inven.inventoris');
     }
 
     /**
@@ -24,7 +24,7 @@ class InventarisController extends Controller
      */
     public function create()
     {
-        //
+        return view('inven.create');
     }
 
     /**

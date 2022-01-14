@@ -1,8 +1,10 @@
 @extends('layouts.kfd')
+
 @section('content')
+
 <div class="content">
     <div class="main">
-        <button class="btn btn-primary me-2">Primary</button>
+        <a href="{{ route('create') }}"><button class="btn btn-primary me-2">Primary</button></a>
 
         <div class="table-responsive">
             <table class="table">
@@ -38,4 +40,5 @@
         </div>
     </div>
 </div>
+
 @endsection

@@ -8,10 +8,17 @@ use App\Http\Controllers\MutasiController;
 
 Route::group(['middleware' => 'auth'], function() {
 
-    Route::get('/inventoris', [InventarisController::class, 'index'])->name('inventoris');
+    Route::get('/inven/inventoris', [InventarisController::class, 'index'])->name('inventoris');
+    // Route::get('/inven/create', [InventarisController::class], 'create')->name('inven.create');
+    // Route::get('/inven/create', 'InventarisController@create')->name('inven.create');
     Route::get('/mutasi', [MutasiController::class, 'index'])->name('mutasi');
 
+    Route::resource('inven', 'InventarisController');
 });
+
+Route::get('/create', function () {
+    return view('inven.create');
+})->middleware(['auth'])->name('create');
 
 
 Route::get('/', function () {
