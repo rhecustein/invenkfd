@@ -201,10 +201,10 @@
                                     </a>
                                  </div>
                             </div>
-                        </div>     
+                        </div>
                     </div>
                 </div>
-            </div>    
+            </div>
             <!-- Header END -->
 
             @include('template_backend.navbar')
@@ -428,7 +428,7 @@
             <!-- Content START -->
             <div class="content container">
                 <div class="main">
-                    @yield('main')
+                    @yield('content')
                 </div>
                 <!-- Footer START -->
                 <div class="footer">
@@ -505,13 +505,13 @@
                             </div>
                         </div>
                     </div>
-                </div>            
+                </div>
             </div>
             <!-- Quick View END -->
         </div>
     </div>
 
-    
+
     <!-- Core Vendors JS -->
     <script src="{{ asset('html/demo/app/assets/js/vendors.min.js') }}"></script>
 
