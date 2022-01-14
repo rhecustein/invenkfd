@@ -160,20 +160,20 @@
                             <div class="dropdown header-nav-item-select nav-profile" >
                                 <div class="toggle-wrapper" id="nav-profile-dropdown" data-bs-toggle="dropdown">
                                     <div class="avatar avatar-circle avatar-image" style="width: 35px; height: 35px; line-height: 35px;">
-                                        <img src="{{ asset('html/demo/app/assets/images/avatars/thumb-1.jpg') }}" alt="">
+                                        <img src="{{ asset('html/demo/app/assets/images/avatars/VakuMinion.jpeg') }}" alt="">
                                     </div>
-                                    <span class="fw-bold mx-1">Julio Baker</span>
+                                    <span class="fw-bold mx-1">Pais X Jahwa</span>
                                     <i class="feather icon-chevron-down"></i>
                                 </div>
                                 <div class="dropdown-menu dropdown-menu-end">
                                     <div class="nav-profile-header">
                                        <div class="d-flex align-items-center">
                                             <div class="avatar avatar-circle avatar-image">
-                                                <img src="{{ asset('html/demo/app/assets/images/avatars/thumb-1.jpg') }}" alt="">
+                                                <img src="{{ asset('html/demo/app/assets/images/avatars/VakuMinion.jpeg') }}" alt="">
                                             </div>
                                             <div class="d-flex flex-column ms-1">
-                                                <span class="fw-bold text-dark">Julio Baker</span>
-                                                <span class="font-size-sm">Julio@themenate.com</span>
+                                                <span class="fw-bold text-dark">Pais X Jahwa</span>
+                                                <span class="font-size-sm">Pais@wangy.com</span>
                                             </div>
                                        </div>
                                     </div>
