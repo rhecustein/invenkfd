@@ -59,10 +59,8 @@
             </div>
         </div>
         <div class="card">
-            <div class="card-header">
-                <h4 class="card-title">Lorem Ipsum</h4>
-            </div>
             <div class="card-body">
+                <h4>Lorem Ipsum</h4>
                 <div id="basic-column-chart"></div>
             </div>
         </div>
