@@ -19,12 +19,14 @@
             </a>
             </li>
             <li class="nav-submenu">
-                <div class="nav-submenu-title">
-                    <span>
-                        <i class="feather icon-tag"></i>
-                        <span>Mutasi</span>
-                    </span>
-                </div>
+                <a href="{{ route('mutasi') }}">
+                    <div class="nav-submenu-title">
+                        <span>
+                            <i class="feather icon-tag"></i>
+                            <span>Mutasi</span>
+                        </span>
+                    </div>
+                </a>
             </li>
             
         </ul>

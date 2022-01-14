@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventarisController;
+use App\Http\Controllers\MutasiController;
 
 
 
 Route::group(['middleware' => 'auth'], function() {
-    
+
     Route::get('/inventoris', [InventarisController::class, 'index'])->name('inventoris');
+    Route::get('/mutasi', [MutasiController::class, 'index'])->name('mutasi');
 
 });
 
