@@ -9,12 +9,14 @@
                 </a>
             </li>
             <li class="nav-submenu">
+                <a href="{{ route('inventoris') }}">
                 <div class="nav-submenu-title">
                     <span>
                         <i class="feather icon-package"></i>
                         <span>Inventory</span>
                     </span>
                 </div>
+            </a>
             </li>
             <li class="nav-submenu">
                 <div class="nav-submenu-title">

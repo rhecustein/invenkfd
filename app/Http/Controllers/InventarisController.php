@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Inventori;
+use App\Models\Inventaris;
 use Illuminate\Http\Request;
 
-class InventoriController extends Controller
+class InventarisController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class InventoriController extends Controller
      */
     public function index()
     {
-        //
+        return view('inventoris');
     }
 
     /**
@@ -41,10 +41,10 @@ class InventoriController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Inventori  $inventori
+     * @param  \App\Models\Inventaris  $inventaris
      * @return \Illuminate\Http\Response
      */
-    public function show(Inventori $inventori)
+    public function show(Inventaris $inventaris)
     {
         //
     }
@@ -52,10 +52,10 @@ class InventoriController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Inventori  $inventori
+     * @param  \App\Models\Inventaris  $inventaris
      * @return \Illuminate\Http\Response
      */
-    public function edit(Inventori $inventori)
+    public function edit(Inventaris $inventaris)
     {
         //
     }
@@ -64,10 +64,10 @@ class InventoriController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Inventori  $inventori
+     * @param  \App\Models\Inventaris  $inventaris
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventori $inventori)
+    public function update(Request $request, Inventaris $inventaris)
     {
         //
     }
@@ -75,10 +75,10 @@ class InventoriController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Inventori  $inventori
+     * @param  \App\Models\Inventaris  $inventaris
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inventori $inventori)
+    public function destroy(Inventaris $inventaris)
     {
         //
     }
