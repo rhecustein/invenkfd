@@ -518,6 +518,7 @@
     <!-- page js -->
     <script src="{{ asset('html/demo/app/assets/vendors/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('html/demo/app/assets/js/pages/dashboard.js') }}"></script>
+    <script src="{{ asset('html/demo/app/assets/js/pages/chart.js') }}"></script>
 
     <!-- Core JS -->
     <script src="{{ asset('html/demo/app/assets/js/app.min.js') }}"></script>
