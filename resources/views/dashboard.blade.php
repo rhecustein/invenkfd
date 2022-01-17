@@ -61,7 +61,7 @@
         <div class="card">
             <div class="card-body">
                 <h4>Lorem Ipsum</h4>
-                <div id="basic-column-chart"></div>
+                <div id="dashline-chart"></div>
             </div>
         </div>
     </div>
