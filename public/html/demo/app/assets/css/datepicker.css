@@ -1,0 +1,24 @@
+.datepicker {
+    width: 225px;
+}
+
+.datepicker .datepicker-head {
+    width: 100%;
+}
+
+.datepicker .btn-group {
+    width: 100%;
+}
+
+.datepicker .datepicker-body {
+    width: 100%;
+}
+
+.table.datepicker-table {
+    margin-bottom: 0px;
+}
+
+.table.datepicker-table th,
+.table.datepicker-table td {
+    text-align: center;
+}

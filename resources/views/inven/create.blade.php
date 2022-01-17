@@ -1,6 +1,9 @@
 @extends('layouts.kfd')
 @section('content')
 
+<head>
+    
+</head>
 
 {{-- <div class="mb-3">
     <label for="formGroupExampleInput" class="form-label">Example label</label>
@@ -35,16 +38,48 @@
     <textarea class="form-control" name="content"></textarea>
 </div>
 
-{{-- <div class="container mt-5" style="max-width: 450px">
-    <div class="form-group">
-        <div class='input-group date' id='datetimepicker'>
-        <input type='text' class="form-control" />
-        <span class="input-group-addon">
-          <span class="glyphicon glyphicon-calendar"></span>
-        </span>
-        </div>
+<div class="datepicker datepicker-inline"
+       data-view="month"
+       data-target="#input"
+       data-highlight-today="true">
+    
+    <div class="datepicker-head">
+      <div class="btn-group">
+        <button class="btn btn-default" data-prev="datepicker">
+          <i class="fa fa-chevron-left"></i>
+        </button>
+        <button class="btn btn-default" data-increase-view="datepicker">
+          February, 2016
+        </button>
+        <button class="btn btn-default" data-next="datepicker">
+          <i class="fa fa-chevron-right"></i>
+        </button>
+      </div>
     </div>
-</div> --}}
+    
+    <div class="datepicker-body"></div>
+    
+    <div class="datepicker-head">
+      <div class="btn-group">
+        <button class="btn btn-default" data-prev="datepicker">
+          <i class="fa fa-crosshairs"></i>
+          Today
+        </button>
+        <button class="btn btn-default" data-increase-view="datepicker">
+          <i class="fa fa-trash"></i>
+          Clear
+        </button>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- } -->
+  
+  <input type="text"
+         class="form-control"
+         placeholder="Target for inline datepicker"
+         id="input" /> 
 
 <div class="mb-3">
     <a href="{{ route('inventoris') }}"><button class="btn btn-primary btn-block">Simpan Barang</button></a>
