@@ -4,7 +4,6 @@
 <body>
     <div class="layout">
         <div class="horizontal-layout">
-
             <!-- Content START -->
             <div class="content container">
                 <div class="main">
@@ -497,7 +496,7 @@
         </div>
     </div>
 
-    
+
     <!-- Core Vendors JS -->
     <script src="assets/js/vendors.min.js"></script>
 
