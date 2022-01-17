@@ -15,7 +15,7 @@
     <link href="{{ asset('html/demo/app/assets/css/app.min.css') }}" rel="stylesheet">
 
     <!-- Datetime Picker CSS -->
-    <link rel="stylesheet" href="html/demo/app/assets/css/datepicker.css">
+    {{-- <link rel="stylesheet" href="html/demo/app/assets/css/datepicker.css"> --}}
 
 </head>
 
@@ -55,7 +55,7 @@
                                             </div>
                                             <div class="ms-2">
                                                 <span>
-                                                    <span class="fw-bolder text-dark">Jean Bowman </span>
+                                                    <span class="fw-bolder text-dark">Jean Bowman</span>
                                                     <span>invited you to new project.</span>
                                                 </span>
                                                 <div class="font-size-sm fw-bold mt-1">

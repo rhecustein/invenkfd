@@ -1,245 +1,309 @@
-/*
-| ------------------------------------------------------------------------------
-| Moment extension (rough draft)
-| ------------------------------------------------------------------------------
-*/
-
-(function(moment){
+let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+  let months = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
   
-    var startOf = moment.prototype.startOf,
-        aliases = {
-          'mi': 'millennium',
-          'millennium': 'millennium',
-          'millennia': 'millennium',
-          'ce': 'century',
-          'century': 'century',
-          'centuries': 'century',
-          'de': 'decade',
-          'decade': 'decade',
-          'decades': 'decade',
-        },
-        normalizeUnits = function (units) {
-          return typeof units === 'string' ? 
-            aliases[units] || aliases[units.toLowerCase()] : 
-            undefined;
-        };
-    
-    moment.prototype.startOf = function (units) {
-      var prevUnits = units;
-      units = normalizeUnits(units);
-      if (! units) {
-        return startOf.call(this, prevUnits);
+  let years = [
+    "2014",
+    "2015",
+    "2016",
+    "2017",
+    "2018",
+    "2019",
+    "2020",
+    "2021",
+    "2022",
+    "2023",
+  ];
+  
+  $(function() {
+    for (let i = 0; i < years.length; i++) {
+      $(".years").append(
+        "<div class='yearSelector' id='" + years[i] + "'>" + years[i] + "</div>"
+      );
+    }
+    fillCalendar();
+  
+    $(".months").bind("mousewheel", function(e) {
+      // scrolling up
+      if (e.originalEvent.wheelDelta / 120 > 0) {
+        if ($(this).scrollTop() == 0)
+          $(".monthSelector")
+            .last()
+            .prependTo(".months");
       } else {
-        switch (units) {
-          case 'millennium':
-            this.year(Math.floor(this.year() / 1000) * 1000);
-          case 'century':
-            this.year(Math.floor(this.year() / 100) * 100);
-          case 'decade':
-            this.year(Math.floor(this.year() / 10) * 10);
+        if (
+          $(e.target).scrollTop() + $(e.target).innerHeight() >=
+          $(e.target)[0].scrollHeight
+        ) {
+          $(".monthSelector")
+            .first()
+            .appendTo(".months");
         }
       }
-      return this.startOf('year');
-    }
-    
-  })(moment);
+      return false;
+    });
   
-  /*
-  | ------------------------------------------------------------------------------
-  | Calendar plugin (rough draft)
-  | ------------------------------------------------------------------------------
-  */
-  
-  (function($, moment){
-    
-    var NAME      = 'datepicker',
-        NAMESPACE = 'bs.' + NAME,
-        TOGGLE    = 'data-toggle="datepicker"',
-        APIKEY    = NAMESPACE + '.data-api',
-        CLICK     = 'click.' + APIKEY,
-        FOCUS     = 'focus.' + APIKEY,
-        BLUR      = 'blur.' + APIKEY;
-    
-    var views = ['time', 'day', 'month', 'year', 'decade', 'century'];
-    
-    var Datepicker= function (elem, options) {
-      this.elem = elem;
-      this.options = options;
-      this.init();
-    };
-    
-    Datepicker.DEFAULTS = {
-      autoclose: true,
-      datetime: undefined,
-      format: 'MM/DD/YYYY',
-      minView: 'month',
-      maxView: 'year',
-      view: 'month',
-    };
-    
-    Datepicker.VIEWS = [
-      'day',    // Time select
-      'month',  // Day select
-      'year',   // Month select
-      'decade', // Year select (10x)
-      'century' // Decade select (10x)
-    ];
-    
-    Datepicker.VIEW_ALIAS = {
-      'day':      0, 'time':    0,
-      'month':    1, 'days':    1,
-      'year':     2, 'months':  2,
-      'decade':   3, 'years':   3,
-      'century':  4, 'decades': 4
-    };
-    
-    Datepicker.prototype.init = function () {
-      var $elem = $(this.elem),
-          $body = $elem.find('.datepicker-body');
-      if ($body.length > 0) {
-        this.body = $body[0];
+    $(".years").bind("mousewheel", function(e) {
+      // scrolling up
+      if (e.originalEvent.wheelDelta / 120 > 0) {
+        if ($(this).scrollTop() == 0) {
+          $(".yearSelector")
+            .last()
+            .remove();
+          let year =
+            parseInt(
+              $(".yearSelector")
+                .first()
+                .html()
+            ) - 1;
+          let yearDiv =
+            "<div class='yearSelector' id='" + year + "'>" + year + "</div>";
+          $(".years").prepend(yearDiv);
+        }
       } else {
-        this.body = $elem[0];
+        if (
+          $(e.target).scrollTop() + $(e.target).innerHeight() >=
+          $(e.target)[0].scrollHeight
+        ) {
+          $(".yearSelector")
+            .first()
+            .remove();
+          let year =
+            parseInt(
+              $(".yearSelector")
+                .last()
+                .html()
+            ) + 1;
+          let yearDiv =
+            "<div class='yearSelector' id='" + year + "'>" + year + "</div>";
+          $(".years").append(yearDiv);
+        }
       }
-      this.render();
-    }
-    
-    Datepicker.prototype.render = function () {
-      
-      var view = this.options.view,
-          datetime = moment(),
-          $body = $(this.body),
-          html = '';
-      
-      if (view == 'time') {
-        $body.append('Hello time world!!');
-      } else {
-        
-        var now = moment(),
-            today,
-            month
-        
-        var stepType, 
-            stepAmount, 
-            format,
-            rowCount = 6,
-            colCount = 7,
-            i;
-        
-        if (view == 'century') { // 2000 - 2099
-          datetime.year((Math.floor(datetime.year()/100)*100)-10);
-          stepType = 'year';
-          stepAmount = 10;
-          format = 'YYYY';
-          rowCount = 3;
-          colCount = 4;
-        } else if (view == 'decade') { // 2010 - 2019
-          // First year will be out-of-bounds
-          // Last year will be out-of-bounds
-          datetime.year((parseInt(datetime.year()/10,10)*10)-1);
-          stepType = 'year';
-          stepAmount = 1;
-          format = 'YYYY';
-          rowCount = 3;
-          colCount = 4;
-        } else if (view == 'year') { // Jan - Dec
-          datetime.startOf('year');
-          stepType = 'month';
-          stepAmount = 1;
-          format = 'MMM';
-          rowCount = 3;
-          colCount = 4;
-        } else { // 1 - 31
-          // 0-6 days will be out-of-bounds in week 1
-          // 0-7 days will be out-of-bounds in week 5
-          // 0-7 days will be out-of-bounds in week 6
-          datetime.startOf('month').startOf('week');
-          stepType = 'day';
-          stepAmount = 1;
-          format = 'D';
-          rowCount = 6;
-          colCount = 7;
-        }
-        
-        html += '<table class="table table-bordered table-condensed datepicker-table">';
-        if (view == 'month') {
-          html += '<thead>' +
-                  '<tr>' +
-                  '<th>Su</th>' +
-                  '<th>Mo</th>' +
-                  '<th>Tu</th>' +
-                  '<th>We</th>' +
-                  '<th>Th</th>' +
-                  '<th>Fr</th>' +
-                  '<th>Sa</th>' +
-                  '</tr>' +
-                  '<thead>';
-        }
-        html += '<tbody>';
-        for (x = 0; x < rowCount; x++) {
-          html += '<tr>';
-          for (y = 0; y < colCount; y++) {
-            html += '<td>';
-            html += datetime.format(format);
-            html += '</td>';
-            datetime.add(stepAmount, stepType);
-          }
-          html += '</tr>';
-        }
-        html += '</tbody>';
-        html += '</table>';
-        $body[0].innerHTML = html;
-        
-      }
-      
-    }
-  
-    function Plugin(option) {
-      return this.each(function () {
-        
-        var $this = $(this),
-            data  = $this.data(NAMESPACE),
-            options = typeof option == 'object' && option;
-        
-        if (! data) {
-          options = $.extend({}, Datepicker.DEFAULTS, $this.data(), options);
-          data = new Datepicker(this, options);
-          $this.data(NAMESPACE, data);
-        }
-        
-      });
-    };
-  
-    var noConflict = $.fn.datepicker;
-  
-    $.fn.datepicker             = Plugin;
-    $.fn.datepicker.Constructor = Datepicker;
-  
-    $.fn.datepicker.noConflict = function () {
-      $.fn.datepicker = noConflict;
-      return this;
-    };
-  
-    // Data-API.
-    function clickHandler (e) {
-      var $this = $(this),
-          data = $this.data(NAMESPACE);
-      console.log('something!!!');
-      if (data) {
-      }
-    }
-    
-    $(document)
-      .on(CLICK, '[data-toggle="datepicker"]', clickHandler);
-    
-  })(jQuery, moment);
-  
-  /*
-  | ------------------------------------------------------------------------------
-  | Installation
-  | ------------------------------------------------------------------------------
-  */
-  
-  $(function () {
-    $('.datepicker').datepicker()
+      return false;
+    });
   });
+  
+  $(".date-time").on("focus", function(e) {
+    $(".date-time-picker").addClass("focus");
+  });
+  $(".date-time").on("blur", function(e) {
+    // console.log("lala")
+    // $(".date-time-picker").removeClass("focus");
+    // return false
+  });
+  $(".date-time").on("keydown", function(e) {
+    return false;
+    // $(this).focus()
+  });
+  $(".dayNumber").on("click", function(e) {
+    // console.log(e.currentTarget)
+    // if(e.currentTareget)
+    $(".selected").removeClass("selected");
+    $(this).addClass("selected");
+    let selectedDate = "";
+    selectedDate += $(this).html() + " ";
+    selectedDate += $("#month").html() + ", ";
+    selectedDate += $("#year").html();
+    // console.log(selectedDate)
+    $(".date-time").val(selectedDate);
+    $(".date-time").focus();
+    // $(".date-time-picker").removeClass("focus");
+  });
+  
+  $(document).on("click", e => {
+    var datePicker = $(".date-time-picker");
+    if (!datePicker.is(e.target) && datePicker.has(e.target).length === 0)
+      $(".date-time-picker").removeClass("focus");
+  });
+  
+  $(".selected-month").on("click", e => {
+    $(".dates-content").hide();
+    $(".month-year").show();
+    $(".dates").css("background", "#fbf6f6");
+  });
+  
+  $(".select-my").on("click", e => {
+    //   Select month
+    let selector = $(".selector")[0];
+    let months = $(".monthSelector");
+    let years = $(".yearSelector");
+    let selectedMonth = "";
+    let selectedYear = "";
+  
+    for (let i = 0; i < months.length; i++) {
+      let crntMonth = months[i];
+      if (
+        crntMonth.offsetTop < selector.offsetTop &&
+        crntMonth.offsetTop + crntMonth.offsetHeight >
+          selector.offsetTop + selector.offsetHeight
+      ) {
+        selectedMonth = $(crntMonth).html();
+      }
+    }
+    for (let i = 0; i < years.length; i++) {
+      let crntYear = years[i];
+      if (
+        crntYear.offsetTop < selector.offsetTop &&
+        crntYear.offsetTop + crntYear.offsetHeight >
+          selector.offsetTop + selector.offsetHeight
+      ) {
+        selectedYear = $(crntYear).html();
+      }
+    }
+    $(".selected-month #month").html(selectedMonth);
+    $(".selected-month #year").html(selectedYear);
+    // console.log(selectedMonth + ", " + selectedYear);
+    $(".selected-month").data("month", selectedMonth + ", " + selectedYear);
+  
+    fillCalendar();
+  
+    $(".dates-content").show();
+    $(".month-year").hide();
+    $(".dates").css("background", "");
+  });
+  
+  const fillCalendar = function() {
+    $(".outOfMonth").removeClass("outOfMonth");
+    $(".selected").removeClass("selected");
+    let selectedMonth = $(".selected-month").data("month");
+    let selectedMonthDate = new Date(selectedMonth);
+    let selectedYear = selectedMonthDate.getFullYear();
+    let isJan = selectedMonthDate.getMonth() == 0;
+    let lastMonth = selectedMonthDate.getMonth() - 1;
+    let lastDayInLastMonthDate = {};
+    if (isJan) {
+      let lastYear = selectedMonthDate.getFullYear() - 1;
+      lastDayInLastMonthDate = new Date(lastYear, 12, 0);
+    } else {
+      lastDayInLastMonthDate = new Date(selectedYear, lastMonth + 1, 0);
+    }
+  
+    let firstDayOfMonth = new Date(selectedMonth).getDay();
+  
+    // let firstWeekInCal = [];
+    let lastDateInLastMonth = lastDayInLastMonthDate.getDate();
+    let lastDayInLastMonth = lastDayInLastMonthDate.getDay();
+  
+    let monthDayCounter = 1;
+    const week1 = $("#week1");
+    for (let d = 0; d < 7; d++) {
+      if (d <= lastDayInLastMonthDate.getDay()) {
+        let thisDay = lastDateInLastMonth - lastDayInLastMonth + d;
+        $("#week1 #day" + (d + 1)).html(thisDay);
+        $("#week1 #day" + (d + 1)).addClass("outOfMonth");
+  
+        // firstWeekInCal.push(thisDay);
+      } else {
+        $("#week1 #day" + (d + 1)).html(monthDayCounter);
+        // firstWeekInCal.push(monthDayCounter);
+        monthDayCounter++;
+      }
+    }
+  
+    // let calendarWeeks = [firstWeekInCal]
+    let daysOfSelectedMonth = new Date(
+      selectedYear,
+      selectedMonthDate.getMonth() + 1,
+      0
+    ).getDate();
+    let nextMonthCounter = 1;
+    for (let w = 0; w <= 4; w++) {
+      let weekEl = $("#week" + (w + 2));
+      // let calendarWeek = [];
+      for (let d = 0; d < 7; d++) {
+        if (monthDayCounter <= daysOfSelectedMonth) {
+          // calendarWeek.push(monthDayCounter);
+          weekEl.children("#day" + (d + 1)).html(monthDayCounter);
+          monthDayCounter++;
+        } else {
+          // calendarWeek.push(nextMonthCounter);
+          weekEl.children("#day" + (d + 1)).html(nextMonthCounter);
+          weekEl.children("#day" + (d + 1)).addClass("outOfMonth");
+          nextMonthCounter++;
+        }
+      }
+    }
+  };
+  
+  
+  $(".months").on("scroll", function(e) {
+      // scrolling up
+      // if (e.originalEvent.wheelDelta / 120 > 0) {
+        console.log("lala")
+        if ($(e.target).scrollTop() == 0)
+          $(".monthSelector")
+            .last()
+            .prependTo(".months");
+      // } else {
+        if (
+          $(e.target).scrollTop() + $(e.target).innerHeight() >=
+          $(e.target)[0].scrollHeight
+        ) {
+          $(".monthSelector")
+            .first()
+            .appendTo(".months");
+        }
+      // }
+      return false;
+    });
+  
+  
+    $(".years").on("scroll", function(e) {
+      // scrolling up
+      // if (e.originalEvent.wheelDelta / 120 > 0) {
+        if ($(e.target).scrollTop() == 0) {
+          $(".yearSelector")
+            .last()
+            .remove();
+          let year =
+            parseInt(
+              $(".yearSelector")
+                .first()
+                .html()
+            ) - 1;
+          let yearDiv =
+            "<div class='yearSelector' id='" + year + "'>" + year + "</div>";
+          $(".years").prepend(yearDiv);
+        }
+      // } else {
+      console.log($(e.target).scrollTop() + $(e.target).innerHeight() )
+        if (
+          $(e.target).scrollTop() + $(e.target).innerHeight() >=
+          $(e.target)[0].scrollHeight
+        ) {
+          $(".yearSelector")
+            .first()
+            .remove();
+          let year =
+            parseInt(
+              $(".yearSelector")
+                .last()
+                .html()
+            ) + 1;
+          let yearDiv =
+            "<div class='yearSelector' id='" + year + "'>" + year + "</div>";
+          $(".years").append(yearDiv);
+        }
+      // }
+      return false;
+    });

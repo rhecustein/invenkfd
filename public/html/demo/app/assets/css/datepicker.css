@@ -1,24 +1,265 @@
-.datepicker {
-    width: 225px;
+:root {
+    --orange: #ffab91;
+    --darkOrange: #ff7043;
+    --lightOrange: #ffccbc;
+    --grey: #424242;
+    --lightGrey: #e0e0e0;
+    --datesWidth: 22rem;
+    --datesHeight: 23.5rem;
+    --background: #fbf6f6;
 }
 
-.datepicker .datepicker-head {
-    width: 100%;
-}
-
-.datepicker .btn-group {
-    width: 100%;
-}
-
-.datepicker .datepicker-body {
-    width: 100%;
-}
-
-.table.datepicker-table {
-    margin-bottom: 0px;
-}
-
-.table.datepicker-table th,
-.table.datepicker-table td {
+/* body {
+    background-color: #ffffff;
+    background-image: url("data:image/svg+xml,%3Csvg width='36' height='36' viewBox='0 0 36 36' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 0H0v36h36V0zM15.126 2H2v13.126c.367.094.714.24 1.032.428L15.554 3.032c-.188-.318-.334-.665-.428-1.032zM18 4.874V18H4.874c-.094-.367-.24-.714-.428-1.032L16.968 4.446c.318.188.665.334 1.032.428zM22.874 2h11.712L20 16.586V4.874c1.406-.362 2.512-1.468 2.874-2.874zm10.252 18H20v13.126c.367.094.714.24 1.032.428l12.522-12.522c-.188-.318-.334-.665-.428-1.032zM36 22.874V36H22.874c-.094-.367-.24-.714-.428-1.032l12.522-12.522c.318.188.665.334 1.032.428zm0-7.748V3.414L21.414 18h11.712c.362-1.406 1.468-2.512 2.874-2.874zm-18 18V21.414L3.414 36h11.712c.362-1.406 1.468-2.512 2.874-2.874zM4.874 20h11.712L2 34.586V22.874c1.406-.362 2.512-1.468 2.874-2.874z' fill='%23e9e5ee' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
     text-align: center;
+    font-family: "Nunito", sans-serif;
+} */
+
+.content-datepicker {
+    padding: 8rem;
+    text-align: center;
+    font-family: "Nunito", sans-serif;
+}
+
+.date-time-picker {
+    width: var(--datesWidth);
+    margin: auto;
+    color: var(--grey);
+}
+
+input.date-time {
+    border: 0;
+    height: 3rem;
+    width: 100%;
+    /*   border: 1px solid #eee; */
+    border-bottom: 2px solid #bdbdbd;
+    background: rgba(255, 255, 255, 0.75);
+    font-size: 1.5rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    font-family: "Nunito", sans-serif;
+    color: var(--grey);
+}
+
+input.date-time:focus {
+    outline: none;
+    /*   background: #fff; */
+    border-bottom: 2px solid var(--orange);
+    /*   box-shadow: 1px 1px 5px #ddd; */
+    color: transparent;
+    text-shadow: 0px 0px 0px #000;
+}
+
+.focus input.date-time {
+    border-bottom: 2px solid var(--orange);
+}
+
+.dates {
+    width: 100%;
+    height: var(--datesHeight);
+    background: rgba(255, 255, 255, 0.75);
+    box-shadow: 1px 1px 15px -3px rgba(0, 0, 0, 0.25);
+    display: none;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.focus .dates {
+    display: inherit;
+    -webkit-animation-name: roll;
+    -webkit-animation-duration: 0.3s;
+    animation-name: roll;
+    animation-duration: 0.3s;
+    overflow: hidden;
+}
+
+.selected-month {
+    text-align: left;
+    font-weight: 600;
+    font-size: 1.5rem;
+    padding: 1.4rem 1.5rem;
+    color: var(--darkOrange);
+}
+
+.days,
+.month-year {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: auto;
+    height: auto;
+    width: 20rem;
+}
+
+.days .header {
+    color: var(--darkOrange);
+}
+
+.dayName,
+.dayNumber {
+    width: 2.4rem;
+    margin-right: 0.5rem;
+    float: left;
+}
+
+.dayName:last-child,
+.dayNumber:last-child {
+    margin-right: 0px;
+}
+
+.dates-header {
+    background: var(--background);
+    height: 7rem;
+}
+
+.outOfMonth {
+    color: var(--lightGrey);
+}
+
+.numbers {
+    margin-top: 2rem;
+}
+
+.dayNumber.selected {
+    background: var(--darkOrange);
+    color: white;
+}
+
+.dayNumber {
+    height: 2.2rem;
+    line-height: 2.2rem;
+    border-radius: 5px;
+    transition: background 0.4s;
+}
+
+.dayNumber:not(.selected):not(.outOfMonth):hover {
+    background: var(--lightOrange);
+    cursor: pointer;
+}
+
+.dayNumber.selected,
+.dayNumber.outOfMonth {
+    cursor: default;
+}
+
+.week {
+    /*   display:block; */
+    margin-top: 1rem;
+}
+
+.week:last-child {
+    margin-bottom: 1rem;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes roll {
+    from {
+        opacity: 0;
+        height: 0;
+    }
+
+    to {
+        opacity: 1;
+        height: var(--datesHeight);
+    }
+}
+
+/* Standard syntax */
+@keyframes roll {
+    from {
+        opacity: 0;
+        height: 0;
+    }
+
+    to {
+        opacity: 1;
+        height: var(--datesHeight);
+    }
+}
+
+.selected-month:hover {
+    cursor: pointer;
+}
+
+.month-year {
+    display: grid;
+    width: 100%;
+    grid-template-columns: 1fr 1fr 1fr;
+    margin: 0;
+}
+
+.months,
+.years {
+    max-height: var(--datesHeight);
+    overflow-y: scroll;
+    /*   trasition: height .2; */
+}
+
+.monthSelector,
+.yearSelector {
+    /*   margin: .5rem auto;   */
+    padding: 0.5rem;
+    cursor: default;
+}
+
+/* width */
+.months::-webkit-scrollbar,
+.years::-webkit-scrollbar {
+    width: 0px;
+}
+
+.selector,
+.shadow-top,
+.shadow-bottom {
+    grid-column: 1 / 4;
+    grid-row: 1;
+    height: 2rem;
+}
+
+.selector {
+    margin-top: 10.2rem;
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.shadow-top {
+    z-index: 100;
+    background: linear-gradient(rgba(251, 246, 246, 0.95) 25%,
+            rgba(251, 246, 246, 0));
+    height: 4rem;
+}
+
+.shadow-bottom {
+    z-index: 100;
+    background: linear-gradient(rgba(251, 246, 246, 0),
+            rgba(251, 246, 246, 0.95));
+    height: 4rem;
+    margin-top: calc(var(--datesHeight) - 4rem);
+}
+
+.years {
+    grid-column: 1 / 2;
+    grid-row: 1;
+}
+
+.months {
+    grid-column: 2 / 3;
+    grid-row: 1;
+}
+
+.select-month-year {
+    grid-column: 3 / 4;
+    grid-row: 1;
+    z-index: 101;
+    text-align: right;
+    padding: 0.7rem 1rem;
+}
+
+.select-my {
+    color: var(--darkOrange);
+}
+
+.select-my:hover {
+    cursor: pointer;
 }
