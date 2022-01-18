@@ -1,7 +1,6 @@
 @extends('layouts.kfd')
 @section('content')
 
-<div class="content">
     <div class="main">
         <h2>Dashboard</h2>
         <div class="row">
@@ -111,5 +110,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection
