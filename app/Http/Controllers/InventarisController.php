@@ -14,7 +14,9 @@ class InventarisController extends Controller
      */
     public function index()
     {
-        return view('inven.inventoris');
+        $inventaris = Inventaris::get();
+
+        return view('inven.inventoris',compact('inventaris'));
     }
 
     /**
@@ -35,7 +37,13 @@ class InventarisController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $inventaris = Inventaris::create([
+            'nama_inventaris' => $request->nama_inventaris,
+            'qty_inventaris' => $request->qty_inventaris,
+            'id_kategori' => $request->id_kategori,
+        ]);
+
+        return redirect()->back()->with('message', 'Inventoris Berhasil Disimpan');
     }
 
     /**
