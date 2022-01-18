@@ -5,7 +5,7 @@
     <div class="layout">
         <div class="horizontal-layout">
             <!-- Content START -->
-            <div class="content container">
+            <div class="container">
                 <div class="main">
                     <div class="card">
                         <div class="card-body">
@@ -491,8 +491,11 @@
                                     </tfoot>
                                 </table>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Content END -->
-
         </div>
     </div>
 
