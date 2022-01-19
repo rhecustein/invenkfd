@@ -40,7 +40,7 @@ class InventarisController extends Controller
         $inventaris = Inventaris::create([
             'nama_inventaris' => $request->nama_inventaris,
             'qty_inventaris' => $request->qty_inventaris,
-            'id_kategori' => $request->id_kategori,
+            // 'id_kategori' => $request->id_kategori,
             'keterangan_inventaris' => $request->keterangan_inventaris,
         ]);
 

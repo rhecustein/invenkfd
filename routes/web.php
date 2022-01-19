@@ -6,7 +6,7 @@ use App\Http\Controllers\MutasiController;
 
 
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/inven/inventoris', [InventarisController::class, 'index'])->name('inventoris');
     // Route::get('/inven/create', [InventarisController::class], 'create')->name('inven.create');
@@ -15,6 +15,9 @@ Route::group(['middleware' => 'auth'], function() {
 
     Route::resource('inven', 'InventarisController');
 });
+
+Route::post('store-data', [InventarisController::class, 'store']);
+// Route::post('store-data', 'InventarisController@store');
 
 Route::get('/create', function () {
     return view('inven.create');
@@ -33,4 +36,4 @@ Route::get('/kfd', function () {
     return view('kfd');
 })->middleware(['auth'])->name('kfd');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
