@@ -1,5 +1,5 @@
-import { 
-    ApexStrokeDefault, 
+import {
+    ApexStrokeDefault,
     ApexChartDefault,
     ApexColorDefault,
     ApexDataLabelDefault,
@@ -452,7 +452,7 @@ class Chart {
                 },
                 {
                     name: "serie2",
- 
+
                     data: [53, 32, 33, 52, 13, 44, 32],
                     color: COLOR_2
                 }
@@ -488,7 +488,7 @@ class Chart {
             }
         }
         new ApexCharts(document.querySelector("#grouped-bar-chart"), groupedBarOption).render();
-        
+
         const simplePieOption = {
             series: [44, 55, 13, 43, 22],
             chart: {

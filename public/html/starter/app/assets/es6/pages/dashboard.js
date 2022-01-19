@@ -1,6 +1,6 @@
-import { 
-    ApexChartDefault,  
-    ApexBarDefault, 
+import {
+    ApexChartDefault,
+    ApexBarDefault,
     ApexDataLabelDefault,
     ApexStrokeDefault,
     ApexColorDefault,
@@ -86,7 +86,7 @@ class Dashboard {
                 }
             }
         }
-          
+
         const monthlyRevenueChart = new ApexCharts(document.querySelector("#monthly-revenue"), monthlyRevenueOptions);
 
         monthlyRevenueChart.render();
@@ -140,7 +140,7 @@ class Dashboard {
             regionDataOptions.series.push(elm.value)
             regionDataOptions.labels.push(elm.id)
         })
-          
+
         const regionDataChart = new ApexCharts(document.querySelector("#region-data-chart"), regionDataOptions);
 
         regionDataChart.render();
@@ -171,7 +171,7 @@ class Dashboard {
             legend: {
                 tooltipHoverFormatter: function(val, opts) {
                     return (
-                        `${val} - <strong>$${opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex]} </strong>`                  
+                        `${val} - <strong>$${opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex]} </strong>`
                     );
                 }
             },
