@@ -41,6 +41,7 @@ class InventarisController extends Controller
             'nama_inventaris' => $request->nama_inventaris,
             'qty_inventaris' => $request->qty_inventaris,
             'id_kategori' => $request->id_kategori,
+            'keterangan_inventaris' => $request->keterangan_inventaris,
         ]);
 
         return redirect()->back()->with('message', 'Inventoris Berhasil Disimpan');

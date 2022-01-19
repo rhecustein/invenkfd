@@ -27,10 +27,8 @@
 </div>
 
 <div class="mb-3">
-    <label for="">Tags</label>
-    <select class="form-control" name="tags[]">
-        <option holder>Pilih Tag</option>
-    </select>
+    <label for="">Jumlah</label>
+    <input type="text" class="form-control" name="jumlah" id="formGroupExampleInput">
 </div>
 
 <div class="mb-3">
