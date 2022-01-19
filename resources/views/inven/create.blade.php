@@ -16,7 +16,7 @@
 
 <div class="mb-3">
     <label>Nama Barang</label>
-    <input type="text" class="form-control" name="judul" id="formGroupExampleInput">
+    <input type="text" class="form-control" name="judul" id="formGroupExampleInput" placeholder="Masukan Nama Barang">
 </div>
 
 <div class="mb-3">
@@ -28,12 +28,12 @@
 
 <div class="mb-3">
     <label for="">Jumlah</label>
-    <input type="text" class="form-control" name="jumlah" id="formGroupExampleInput">
+    <input type="text" class="form-control" name="jumlah" id="formGroupExampleInput" placeholder="Masukan Jumlah Barang">
 </div>
 
 <div class="mb-3">
     <label>Keterangan Barang</label>
-    <textarea class="form-control" name="content"></textarea>
+    <textarea class="form-control" name="content" placeholder="Masukan keterangan"></textarea>
 </div>
 
 <div class="content-datepicker">
