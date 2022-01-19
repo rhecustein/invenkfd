@@ -26,6 +26,10 @@
                                     <td>{{ $inven->id_kategori }}</td>
                                     <td>{{ $inven->qty_inventaris }}</td>
                                     <td>{{ $inven->keterangan_inventaris }}</td>
+                                    <td>
+                                        <button class="btn btn-success">Edit</button>
+                                        <button class="btn btn-danger">Delete</button>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
