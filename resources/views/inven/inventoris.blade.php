@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-body">
                 <a href="{{ route('create') }}"><button class="btn btn-primary me-2">Tambah</button></a>
-
+                
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -27,8 +27,8 @@
                                     <td>{{ $inven->qty_inventaris }}</td>
                                     <td>{{ $inven->keterangan_inventaris }}</td>
                                     <td>
-                                        <button class="btn btn-success">Edit</button>
-                                        <button class="btn btn-danger">Delete</button>
+                                        <a href="{{ url('edit/'.$inven->id) }}" class="btn btn-success">Edit</a>
+                                        <a href="{{ url('delete/'.$inven->id) }}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach

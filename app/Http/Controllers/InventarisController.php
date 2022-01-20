@@ -37,14 +37,14 @@ class InventarisController extends Controller
      */
     public function store(Request $request)
     {
-        $inventaris = Inventaris::create([
-            'nama_inventaris' => $request->nama_inventaris,
-            'qty_inventaris' => $request->qty_inventaris,
-            // 'id_kategori' => $request->id_kategori,
-            'keterangan_inventaris' => $request->keterangan_inventaris,
-        ]);
+        $inventaris = new Inventaris();
+        $inventaris->nama_inventaris = $request->input('nama_inventaris');
+        $inventaris->qty_inventaris = $request->input('qty_inventaris');
+        // $inventaris->id_kategori = $request->input('id_kategori');
+        $inventaris->keterangan_inventaris = $request->input('keterangan_inventaris');
+        $inventaris->save();
 
-        return redirect()->back()->with('message', 'Inventoris Berhasil Disimpan');
+        return redirect('inven/inventoris')->with('message', 'Inventoris Berhasil Disimpan');
     }
 
     /**
@@ -64,9 +64,10 @@ class InventarisController extends Controller
      * @param  \App\Models\Inventaris  $inventaris
      * @return \Illuminate\Http\Response
      */
-    public function edit(Inventaris $inventaris)
+    public function edit($id)
     {
-        //
+        $inventaris = Inventaris::find($id);
+        return view('inven.edit', compact('inventaris'));
     }
 
     /**
@@ -76,9 +77,16 @@ class InventarisController extends Controller
      * @param  \App\Models\Inventaris  $inventaris
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventaris $inventaris)
+    public function update(Request $request,$id)
     {
-        //
+        $inventaris = Inventaris::find($id);
+        $inventaris->nama_inventaris = $request->input('nama_inventaris');
+        $inventaris->qty_inventaris = $request->input('qty_inventaris');
+        // $inventaris->id_kategori = $request->input('id_kategori');
+        $inventaris->keterangan_inventaris = $request->input('keterangan_inventaris');
+        $inventaris->update();
+
+        return redirect('inven/inventoris')->with('message', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -87,8 +95,10 @@ class InventarisController extends Controller
      * @param  \App\Models\Inventaris  $inventaris
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inventaris $inventaris)
+    public function destroy($id)
     {
-        //
+        $inventaris = Inventaris::find($id);
+        $inventaris->delete();
+        return redirect('inven/inventoris')->with('message', 'Data Berhasil Dihapus');
     }
 }
