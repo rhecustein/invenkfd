@@ -6,7 +6,7 @@
         <div class="card">
             <div class="card-body">
                 <a href="{{ route('create') }}"><button class="btn btn-primary me-2">Tambah</button></a>
-                
+
                 <div class="table-responsive">
                     <table class="table table-hover">
                         <thead>
@@ -19,16 +19,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($inventaris as $inven)
+                            @foreach ($inventaris as $inven => $hasil)
                                 <tr>
-                                    <th scope="row">{{ $inven->id }}</th>
-                                    <td>{{ $inven->nama_inventaris }}</td>
-                                    <td>{{ $inven->id_kategori }}</td>
-                                    <td>{{ $inven->qty_inventaris }}</td>
-                                    <td>{{ $inven->keterangan_inventaris }}</td>
+                                    <th scope="row">{{ $inven + $inventaris->firstitem() }}</th>
+                                    <td>{{ $hasil->nama_inventaris }}</td>
+                                    <td>{{ $hasil->id_kategori }}</td>
+                                    <td>{{ $hasil->qty_inventaris }}</td>
+                                    <td>{{ $hasil->keterangan_inventaris }}</td>
                                     <td>
-                                        <a href="{{ url('edit/'.$inven->id) }}" class="btn btn-success">Edit</a>
-                                        <a href="{{ url('delete/'.$inven->id) }}" class="btn btn-danger">Delete</a>
+                                        <a href="{{ url('edit/'.$hasil->id) }}" class="btn btn-success">Edit</a>
+                                        <a href="{{ url('delete/'.$hasil->id) }}" class="btn btn-danger">Delete</a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -36,9 +36,7 @@
                     </table>
                 </div>
             </div>
-
         </div>
-
     </div>
 
 @endsection
