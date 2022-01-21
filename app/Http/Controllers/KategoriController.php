@@ -13,7 +13,7 @@ class KategoriController extends Controller
 
     public function index()
     {
-        $kategori = Kategori::paginate(2);
+        $kategori = Kategori::paginate(10000);
         return view('kategori.kategori', compact('kategori'));
     }
 
