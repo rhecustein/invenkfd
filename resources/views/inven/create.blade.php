@@ -17,6 +17,7 @@
     </div>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <form action="{{ url('store-data') }}" method="POST">
     {{ csrf_field() }}
     <div class="mb-3">
@@ -34,10 +35,25 @@
     <div class="mb-3">
         <label for="">Jumlah</label>
         <input type="text" class="form-control" name="qty_inventaris" id="formGroupExampleInput">
+=======
+    <div class="mb-3">
+        <label>Kategori</label>
+        <select class="form-control" name="category_id">
+            <option holder>Pilih Kategori</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label for="">Tags</label>
+        <select class="form-control" name="tags[]">
+            <option holder>Pilih Tag</option>
+        </select>
+>>>>>>> Stashed changes
     </div>
 
     <div class="mb-3">
         <label>Keterangan Barang</label>
+<<<<<<< Updated upstream
         <input type="text" class="form-control" name="keterangan_inventaris" id="formGroupExampleInput">
     </div>
     <a href="{{ route('inventoris') }}"><button type="submit" class="btn btn-primary btn-block">Simpan Barang</button></a>
@@ -63,6 +79,11 @@
         <textarea class="form-control" name="content"></textarea>
     </div>
 
+=======
+        <textarea class="form-control" name="content"></textarea>
+    </div>
+
+>>>>>>> Stashed changes
     <div class="content-datepicker">
       <div class="date-time-picker focus">
         <input class="date-time" type="text">
@@ -183,6 +204,10 @@
     <a href="{{ route('inventoris') }}"><button class="btn btn-primary btn-block">Simpan Barang</button></a>
 </form>
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 
 >>>>>>> Stashed changes
 

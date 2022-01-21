@@ -14,7 +14,11 @@ class Inventaris extends Model
         'nama_inventaris',
         'qty_inventaris',
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         // 'id_kategori',
+=======
+        'id_kategori',
+>>>>>>> Stashed changes
 =======
         'id_kategori',
 >>>>>>> Stashed changes
