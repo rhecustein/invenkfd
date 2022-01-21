@@ -6,11 +6,6 @@ use App\Models\Inventaris;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-<<<<<<< HEAD
-
-=======
->>>>>>> origin/main
-
 class InventarisController extends Controller
 {
     /**
@@ -30,7 +25,7 @@ class InventarisController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
 
         $kategori = Kategori::all();
         return view('inven.create', compact('category'));
