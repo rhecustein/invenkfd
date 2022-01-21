@@ -13,6 +13,7 @@ class Inventaris extends Model
     protected $fillable = [
         'nama_inventaris',
         'qty_inventaris',
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
         // 'id_kategori',
@@ -22,6 +23,13 @@ class Inventaris extends Model
 =======
         'id_kategori',
 >>>>>>> Stashed changes
+=======
+        'id_kategori',
+>>>>>>> origin/main
         'keterangan_inventaris'
     ];
+
+    public function kategori(){
+        return $this->belongsTo('App\Kategori');
+    }
 }

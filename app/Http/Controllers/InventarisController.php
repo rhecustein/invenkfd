@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventaris;
+use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+<<<<<<< HEAD
+
+=======
+>>>>>>> origin/main
 
 class InventarisController extends Controller
 {
@@ -25,8 +30,10 @@ class InventarisController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('inven.create');
+    {   
+
+        $kategori = Kategori::all();
+        return view('inven.create', compact('category'));
     }
 
     /**
@@ -41,7 +48,8 @@ class InventarisController extends Controller
         $inventaris = Inventaris::create([
             'nama_inventaris' => $request->nama_inventaris,
             'qty_inventaris' => $request->qty_inventaris,
-            // 'id_kategori' => $request->id_kategori,
+            'id_kategori' => $request->id_kategori,
+            'slug' => Str::slug($request->nama_inventaris),
             'keterangan_inventaris' => $request->keterangan_inventaris,
         ]);
 

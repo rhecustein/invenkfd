@@ -24,7 +24,7 @@
                 </a>
                 <ul class="nav-menu">
                     <li class="nav-menu-item">
-                        <a href="">
+                        <a href="{{ route('kategori') }}">
                             <i class="feather icon-package"></i>
                             <span>Kategori</span>
                         </a>
