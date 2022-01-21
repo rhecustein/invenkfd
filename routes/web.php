@@ -25,6 +25,12 @@ Route::post('kategori.store', [KategoriController::class, 'store']);
 Route::post('store-data', [InventarisController::class, 'store']);
 // Route::post('store-data', 'InventarisController@store');
 
+Route::get('edit/{id}', [InventarisController::class, 'edit']);
+
+Route::put('update-data/{id}', [InventarisController::class, 'update']);
+
+Route::get('delete/{id}', [InventarisController::class, 'destroy']);
+
 Route::get('/create', function () {
     return view('inven.create');
 })->middleware(['auth'])->name('create');

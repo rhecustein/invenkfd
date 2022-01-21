@@ -6,7 +6,10 @@ use App\Models\Inventaris;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/main
 
 class InventarisController extends Controller
 {
@@ -17,8 +20,7 @@ class InventarisController extends Controller
      */
     public function index()
     {
-        $inventaris = Inventaris::get();
-
+        $inventaris = Inventaris::paginate(100000);
         return view('inven.inventoris',compact('inventaris'));
     }
 
@@ -42,6 +44,7 @@ class InventarisController extends Controller
      */
     public function store(Request $request)
     {
+
         $inventaris = Inventaris::create([
             'nama_inventaris' => $request->nama_inventaris,
             'qty_inventaris' => $request->qty_inventaris,
@@ -50,7 +53,7 @@ class InventarisController extends Controller
             'keterangan_inventaris' => $request->keterangan_inventaris,
         ]);
 
-        return redirect()->back()->with('message', 'Inventoris Berhasil Disimpan');
+        return redirect('inven/inventoris')->with('message', 'Inventoris Berhasil Disimpan');
     }
 
     /**
@@ -70,9 +73,10 @@ class InventarisController extends Controller
      * @param  \App\Models\Inventaris  $inventaris
      * @return \Illuminate\Http\Response
      */
-    public function edit(Inventaris $inventaris)
+    public function edit($id)
     {
-        //
+        $inventaris = Inventaris::findorfail($id);
+        return view('inven.edit', compact('inventaris'));
     }
 
     /**
@@ -82,9 +86,16 @@ class InventarisController extends Controller
      * @param  \App\Models\Inventaris  $inventaris
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Inventaris $inventaris)
+    public function update(Request $request,$id)
     {
-        //
+        $inventaris = Inventaris::findorfail($id);
+        $inventaris->nama_inventaris = $request->input('nama_inventaris');
+        $inventaris->qty_inventaris = $request->input('qty_inventaris');
+        // $inventaris->id_kategori = $request->input('id_kategori');
+        $inventaris->keterangan_inventaris = $request->input('keterangan_inventaris');
+        $inventaris->update();
+
+        return redirect('inven/inventoris')->with('message', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -93,8 +104,10 @@ class InventarisController extends Controller
      * @param  \App\Models\Inventaris  $inventaris
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Inventaris $inventaris)
+    public function destroy($id)
     {
-        //
+        $inventaris = Inventaris::findorfail($id);
+        $inventaris->delete();
+        return redirect('inven/inventoris')->with('message', 'Data Berhasil Dihapus');
     }
 }

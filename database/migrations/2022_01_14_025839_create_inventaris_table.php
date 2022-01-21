@@ -14,7 +14,7 @@ class CreateInventarisTable extends Migration
     public function up()
     {
         Schema::create('inventaris', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->string('nama_inventaris')->nullable();
             $table->integer('qty_inventaris')->nullable();
             $table->integer('id_kategori')->nullable();
