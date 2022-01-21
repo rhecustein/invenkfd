@@ -18,7 +18,6 @@
 
 <form action="{{ url('store-data') }}" method="POST" enctype="multipart/form-data">
     @csrf
-=======
 {{-- <div class="mb-3">
     <label for="formGroupExampleInput" class="form-label">Example label</label>
     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input placeholder">
@@ -34,18 +33,13 @@
         <input type="text" class="form-control" name="nama_inventaris" id="formGroupExampleInput">
     </div>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
 <form action="{{ url('store-data') }}" method="POST">
     {{ csrf_field() }}
->>>>>>> origin/main
     <div class="mb-3">
         <label>Nama Barang</label>
         <input type="text" class="form-control" name="nama_inventaris" id="formGroupExampleInput">
     </div>
 
-<<<<<<< HEAD
     {{-- <div class="mb-3">
         <label>Kategori</label>
         <select class="form-control" name="id_kategori">
@@ -55,14 +49,12 @@
             @endforeach
         </select>
     </div> --}}
-=======
         {{-- <div class="mb-3">
             <label>Kategori</label>
             <select class="form-control" name="id_kategori">
                 <option holder>Pilih Kategori</option>
             </select>
         </div> --}}
->>>>>>> origin/main
 
     <div class="mb-3">
         <label>Kategori</label>
@@ -77,12 +69,10 @@
     <div class="mb-3">
         <label for="">Jumlah</label>
         <input type="text" class="form-control" name="qty_inventaris" id="formGroupExampleInput">
-=======
     <div class="mb-3">
         <label>Kategori</label>
         <select class="form-control" name="category_id">
             <option holder>Pilih Kategori</option>
-=======
     <div class="mb-3">
         <label>Kategori</label>
         <select class="form-control" name="category_id">
@@ -94,28 +84,23 @@
         <label for="">Tags</label>
         <select class="form-control" name="tags[]">
             <option holder>Pilih Tag</option>
->>>>>>> Stashed changes
         </select>
     </div>
 
     <div class="mb-3">
-<<<<<<< Updated upstream
         <label for="">Tags</label>
         <select class="form-control" name="tags[]">
             <option holder>Pilih Tag</option>
         </select>
->>>>>>> Stashed changes
     </div>
 
     <div class="mb-3">
         <label>Keterangan Barang</label>
-<<<<<<< Updated upstream
         <input type="text" class="form-control" name="keterangan_inventaris" id="formGroupExampleInput">
     </div>
     <a href="{{ route('inventoris') }}"><button type="submit" class="btn btn-primary btn-block">Simpan Barang</button></a>
 </form>
 
-=======
     <div class="mb-3">
         <label>Kategori</label>
         <select class="form-control" name="category_id">
@@ -135,17 +120,13 @@
         <textarea class="form-control" name="content"></textarea>
     </div>
 
-=======
         <textarea class="form-control" name="content"></textarea>
     </div>
 
->>>>>>> Stashed changes
-=======
         <label>Keterangan Barang</label>
         <textarea class="form-control" name="content"></textarea>
     </div>
 
->>>>>>> Stashed changes
     <div class="content-datepicker">
       <div class="date-time-picker focus">
         <input class="date-time" type="text">
@@ -266,16 +247,11 @@
     <a href="{{ route('inventoris') }}"><button class="btn btn-primary btn-block">Simpan Barang</button></a>
 </form>
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
 
->>>>>>> Stashed changes
-=======
 
->>>>>>> Stashed changes
 
->>>>>>> Stashed changes
+
+
 
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
