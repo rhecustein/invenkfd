@@ -26,6 +26,10 @@
         <tr>
             <td>{{ $result + $kategori->firstitem() }}</td>
             <td>{{ $hasil->name }}</td>
+            <td>
+                <a href="{{ url('kategori.edit/'.$hasil->id) }}" class="btn btn-success">Edit</a>
+                <a href="{{ url('kategori.delete/'.$hasil->id) }}" class="btn btn-danger">Delete</a>
+            </td>
         </tr>
         @endforeach
     </tbody>

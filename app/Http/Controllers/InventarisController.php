@@ -86,7 +86,7 @@ class InventarisController extends Controller
         $inventaris = Inventaris::findorfail($id);
         $inventaris->nama_inventaris = $request->input('nama_inventaris');
         $inventaris->qty_inventaris = $request->input('qty_inventaris');
-        // $inventaris->id_kategori = $request->input('id_kategori');
+        $inventaris->id_kategori = $request->input('id_kategori');
         $inventaris->keterangan_inventaris = $request->input('keterangan_inventaris');
         $inventaris->update();
 

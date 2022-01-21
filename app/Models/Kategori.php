@@ -10,7 +10,7 @@ class Kategori extends Model
 
     protected $fillable = ['name', 'slug'];
     protected $table = 'kategori';
-    public function category(){
-        return $this->belongsTo('App\Category');
+    public function kategori(){
+        return $this->belongsTo('App\Kategori');
     }
 }

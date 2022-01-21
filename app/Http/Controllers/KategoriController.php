@@ -52,21 +52,20 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function edit(Kategori $kategori)
+    public function edit($id)
     {
-        //
+        $kategori = Kategori::findorfail($id);
+        return view('kategori.edit', compact('kategori'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Kategori  $kategori
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Kategori $kategori)
+    public function update(Request $request, $id)
     {
-        //
+
+        $kategori = Kategori::findorfail($id);
+        $kategori->name = $request->input('name');
+        $kategori->update();
+
+        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil disimpan');
     }
 
     /**
@@ -75,8 +74,11 @@ class KategoriController extends Controller
      * @param  \App\Models\Kategori  $kategori
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Kategori $kategori)
+    public function destroy($id)
     {
-        //
+        $kategori = Kategori::findorfail($id);
+        $kategori->delete();
+        
+        return redirect('kategori/kategori')->with('success', 'Kategori berhasil dihapus');
     }
 }
