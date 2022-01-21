@@ -13,7 +13,11 @@ class Inventaris extends Model
     protected $fillable = [
         'nama_inventaris',
         'qty_inventaris',
+<<<<<<< Updated upstream
         // 'id_kategori',
+=======
+        'id_kategori',
+>>>>>>> Stashed changes
         'keterangan_inventaris'
     ];
 }
