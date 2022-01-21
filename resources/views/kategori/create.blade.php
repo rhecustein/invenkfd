@@ -1,7 +1,6 @@
 @extends('layouts.kfd')
 
 @section('content')
-    <h1>Menambahkan Kategori</h1>
 
 @section('subjudul', 'Tambah Kategori')
 
