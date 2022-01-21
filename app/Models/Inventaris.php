@@ -13,7 +13,11 @@ class Inventaris extends Model
     protected $fillable = [
         'nama_inventaris',
         'qty_inventaris',
-        // 'id_kategori',
+        'id_kategori',
         'keterangan_inventaris'
     ];
+
+    public function kategori(){
+        return $this->belongsTo('App\Kategori');
+    }
 }
