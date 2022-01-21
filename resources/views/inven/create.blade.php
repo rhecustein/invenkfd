@@ -18,6 +18,7 @@
 
 <<<<<<< Updated upstream
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 <form action="{{ url('store-data') }}" method="POST">
     {{ csrf_field() }}
     <div class="mb-3">
@@ -40,10 +41,24 @@
         <label>Kategori</label>
         <select class="form-control" name="category_id">
             <option holder>Pilih Kategori</option>
+=======
+    <div class="mb-3">
+        <label>Kategori</label>
+        <select class="form-control" name="category_id">
+            <option holder>Pilih Kategori</option>
         </select>
     </div>
 
     <div class="mb-3">
+        <label for="">Tags</label>
+        <select class="form-control" name="tags[]">
+            <option holder>Pilih Tag</option>
+>>>>>>> Stashed changes
+        </select>
+    </div>
+
+    <div class="mb-3">
+<<<<<<< Updated upstream
         <label for="">Tags</label>
         <select class="form-control" name="tags[]">
             <option holder>Pilih Tag</option>
@@ -80,6 +95,12 @@
     </div>
 
 =======
+        <textarea class="form-control" name="content"></textarea>
+    </div>
+
+>>>>>>> Stashed changes
+=======
+        <label>Keterangan Barang</label>
         <textarea class="form-control" name="content"></textarea>
     </div>
 
@@ -205,6 +226,10 @@
 </form>
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 =======
 
 >>>>>>> Stashed changes

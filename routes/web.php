@@ -20,12 +20,15 @@ Route::post('store-data', [InventarisController::class, 'store']);
 // Route::post('store-data', 'InventarisController@store');
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 Route::get('edit/{id}', [InventarisController::class, 'edit']);
 
 Route::put('update-data/{id}', [InventarisController::class, 'update']);
 
 Route::get('delete/{id}', [InventarisController::class, 'destroy']);
 
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 Route::get('/create', function () {
