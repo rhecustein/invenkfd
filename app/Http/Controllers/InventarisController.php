@@ -16,7 +16,7 @@ class InventarisController extends Controller
     public function index()
     {
         $inventaris = Inventaris::paginate(100000);
-        return view('inven.inventoris',compact('inventaris'));
+        return view('inven.inventaris',compact('inventaris'));
     }
 
     /**
@@ -48,7 +48,7 @@ class InventarisController extends Controller
             'keterangan_inventaris' => $request->keterangan_inventaris,
         ]);
 
-        return redirect('inven/inventoris')->with('message', 'Inventoris Berhasil Disimpan');
+        return redirect('inven/inventaris')->with('message', 'Inventaris Berhasil Disimpan');
     }
 
     /**
@@ -90,7 +90,7 @@ class InventarisController extends Controller
         $inventaris->keterangan_inventaris = $request->input('keterangan_inventaris');
         $inventaris->update();
 
-        return redirect('inven/inventoris')->with('message', 'Data Berhasil Disimpan');
+        return redirect('inven/inventaris')->with('message', 'Data Berhasil Disimpan');
     }
 
     /**
@@ -103,6 +103,6 @@ class InventarisController extends Controller
     {
         $inventaris = Inventaris::findorfail($id);
         $inventaris->delete();
-        return redirect('inven/inventoris')->with('message', 'Data Berhasil Dihapus');
+        return redirect('inven/inventaris')->with('message', 'Data Berhasil Dihapus');
     }
 }

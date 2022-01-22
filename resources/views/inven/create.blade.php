@@ -21,7 +21,7 @@
         <label>Kategori</label>
         <select class="form-control" name="id_kategori">
             <option holder>Pilih Kategori</option>
-            @dump($kategori)
+            {{-- @dump($kategori) --}}
             @foreach ($kategori as $result)
             <option value="{{ $result->id }}"> {{ $result->name }} </option>
             @endforeach
@@ -37,7 +37,7 @@
         <label>Keterangan Barang</label>
         <textarea class="form-control" name="keterangan_inventaris"></textarea>
     </div>
-    <a href="{{ route('inventoris') }}"><button class="btn btn-primary btn-block">Simpan Barang</button></a>
+    <a href="{{ route('inventaris') }}"><button class="btn btn-primary btn-block">Simpan Barang</button></a>
 </form>
 
 

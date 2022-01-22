@@ -13,7 +13,7 @@
                 </a>
             </li>
             <li class="nav-submenu">
-                <a href="{{ route('inventoris') }}">
+                <a href="{{ route('inventaris') }}">
                     <div class="nav-submenu-title">
                         <span>
                             <i class="feather icon-package"></i>

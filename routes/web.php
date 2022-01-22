@@ -9,7 +9,7 @@ use App\Http\Controllers\KategoriController;
 
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::get('/inven/inventoris', [InventarisController::class, 'index'])->name('inventoris');
+    Route::get('/inven/inventaris', [InventarisController::class, 'index'])->name('inventaris');
     Route::get('/kategori/kategori', [KategoriController::class, 'index'])->name('kategori');
     // Route::get('/inven/create', [InventarisController::class], 'create')->name('inven.create');
     // Route::get('/inven/create', 'InventarisController@create')->name('inven.create');

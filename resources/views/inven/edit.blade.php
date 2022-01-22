@@ -34,7 +34,7 @@
         <label>Keterangan Barang</label>
         <input type="text" class="form-control" value="{{ $inventaris->keterangan_inventaris }}" name="keterangan_inventaris" id="formGroupExampleInput">
     </div>
-    <a href="{{ route('inventoris') }}"><button type="submit" class="btn btn-primary btn-block">Update</button></a>
+    <a href="{{ route('inventaris') }}"><button type="submit" class="btn btn-primary btn-block">Update</button></a>
 </form>
 
 
