@@ -19,6 +19,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('kategori', 'KategoriController');
 });
 
+Route::get('restore/{id}', [InventarisController::class, 'restore']);
+
+
+
 Route::post('kategori.store', [KategoriController::class, 'store']);
 // Route::post('kategori.store', 'KategoriController@store');
 

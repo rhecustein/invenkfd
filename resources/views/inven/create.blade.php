@@ -21,7 +21,6 @@
         <label>Kategori</label>
         <select class="form-control" name="id_kategori">
             <option holder>Pilih Kategori</option>
-            {{-- @dump($kategori) --}}
             @foreach ($kategori as $result)
             <option value="{{ $result->id }}"> {{ $result->name }} </option>
             @endforeach

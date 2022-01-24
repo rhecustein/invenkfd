@@ -106,8 +106,14 @@ class InventarisController extends Controller
         return redirect('inven/inventaris')->with('message', 'Data Berhasil Dihapus');
     }
 
-    public function trash_list(){
-        // $inventaris = Inventaris::onlyTrashed()->paginate(10);
-        return view('trash.trash');
+    public function trash_list()
+    {
+        $inventaris = Inventaris::onlyTrashed()->paginate(1000);
+        return view('trash.trash', compact('inventaris'));
+    }
+
+    public function restore()
+    {
+        # code...
     }
 }
