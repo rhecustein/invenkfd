@@ -43,6 +43,17 @@
                 </a>
             </li>
 
+            <li class="nav-submenu">
+                <a href="{{ route('trash') }}">
+                    <div class="nav-submenu-title">
+                        <span>
+                            <i class="feather icon-trash-2"></i>
+                            <span>Trash</span>
+                        </span>
+                    </div>
+                </a>
+            </li>
+
         </ul>
     </div>
 </div>

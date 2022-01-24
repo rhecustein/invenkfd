@@ -14,7 +14,7 @@ Route::group(['middleware' => 'auth'], function () {
     // Route::get('/inven/create', [InventarisController::class], 'create')->name('inven.create');
     // Route::get('/inven/create', 'InventarisController@create')->name('inven.create');
     Route::get('/mutasi', [MutasiController::class, 'index'])->name('mutasi');
-
+    Route::get('/trash', [InventarisController::class, 'trash_list'])->name('trash');
     Route::resource('inven', 'InventarisController');
     Route::resource('kategori', 'KategoriController');
 });
