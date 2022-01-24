@@ -5,7 +5,7 @@
     <div class="main">
         <div class="card">
             <div class="card-body">
-                <a href="{{ route('create') }}"><button class="btn btn-primary me-2">Tambah</button></a>
+                <a href="{{ route('inven.create') }}"><button class="btn btn-primary me-2">Tambah</button></a>
 
                 <div class="table-responsive">
                     <table class="table table-hover">

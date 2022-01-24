@@ -28,6 +28,7 @@ class InventarisController extends Controller
     {
 
         $kategori = Kategori::all();
+        // dd($kategori);
         return view('inven.create', compact('kategori'));
     }
 
