@@ -25,8 +25,8 @@
                                     <td>{{ $hasil->qty_inventaris }}</td>
                                     <td>{{ $hasil->keterangan_inventaris }}</td>
                                     <td>
-                                        <a href="{{ url('edit/'.$hasil->id) }}" class="btn btn-success">Restore</a>
-                                        <a href="{{ url('delete/'.$hasil->id) }}" class="btn btn-danger">Delete Permanent</a>
+                                        <a href="{{ url('restore/'.$hasil->id) }}" class="btn btn-success">Restore</a>
+                                        <a href="{{ url('delete-permanent/'.$hasil->id) }}" class="btn btn-danger">Delete Permanent</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -21,7 +21,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::get('restore/{id}', [InventarisController::class, 'restore']);
 
-
+Route::get('delete-permanent/{id}', [InventarisController::class, 'delete_permanent']);
 
 Route::post('kategori.store', [KategoriController::class, 'store']);
 // Route::post('kategori.store', 'KategoriController@store');

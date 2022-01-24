@@ -112,8 +112,29 @@ class InventarisController extends Controller
         return view('trash.trash', compact('inventaris'));
     }
 
-    public function restore()
+    public function restore($id = null)
     {
-        # code...
+        if($id != null) {
+            $inventaris = Inventaris::onlyTrashed()
+                ->where('id', $id)
+                ->restore();
+        } else {
+            $inventaris = Inventaris::onlyTrashed()->restore();
+        }
+
+        return redirect('inven/inventaris')->with('message', 'Data Berhasil Direstore');
+    }
+
+    public function delete_permanent($id = null)
+    {
+        if($id != null) {
+            $inventaris = Inventaris::onlyTrashed()
+                ->where('id', $id)
+                ->forceDelete();
+        } else {
+            $inventaris = Inventaris::onlyTrashed()->forceDelete();
+        }
+
+        return redirect('inven/inventaris')->with('message', 'Data Berhasil Dihapus Permanent');
     }
 }
