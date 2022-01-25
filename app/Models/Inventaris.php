@@ -8,10 +8,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Inventaris extends Model
 {
-    use HasFactory;
     use SoftDeletes;
 
-    protected $table = 'inventaris';
+    // protected $table = 'inventaris';
     protected $fillable = [
         'nama_inventaris',
         'qty_inventaris',
@@ -20,6 +19,6 @@ class Inventaris extends Model
     ];
 
     public function kategori(){
-        return $this->belongsTo('App\Kategori');
+        return $this->belongsTo('App\Models\Kategori');
     }
 }

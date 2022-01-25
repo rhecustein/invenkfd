@@ -10,6 +10,12 @@
 @endforeach
 @endif
 
+@if (Session::has('message'))
+<div class="alert alert-success" role="alert">
+    {{ Session('message') }}
+</div>
+@endif
+
 <form action="{{ url('store-data') }}" method="POST" enctype="multipart/form-data">
     @csrf
     <div class="mb-3">

@@ -50,8 +50,17 @@
                             <i class="feather icon-trash-2"></i>
                             <span>Trash</span>
                         </span>
+                        <i class="nav-submenu-arrow caret-bottom"></i>
                     </div>
                 </a>
+                <ul class="nav-menu">
+                    <li class="nav-menu-item">
+                        <a href="{{ route('trash.kategori') }}">
+                            <i class="feather icon-trash"></i>
+                            <span>Trash List Kategori</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
 
         </ul>

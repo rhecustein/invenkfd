@@ -18,12 +18,15 @@
         <input type="text" class="form-control" value="{{ $inventaris->nama_inventaris }}" name="nama_inventaris" id="formGroupExampleInput">
     </div>
 
-        {{-- <div class="mb-3">
+        <div class="mb-3">
             <label>Kategori</label>
             <select class="form-control" name="id_kategori">
                 <option holder>Pilih Kategori</option>
+                @foreach ($kategori as $result)
+                    <option value="{{ $result->id }}"> {{ $result->name }} </option>
+                @endforeach
             </select>
-        </div> --}}
+        </div>
 
     <div class="mb-3">
         <label for="">Jumlah</label>

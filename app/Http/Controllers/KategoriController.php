@@ -20,7 +20,6 @@ class KategoriController extends Controller
 
     public function create()
     { 
-        $kategori = Kategori::all();
         return view('kategori.create');
     }
 
@@ -37,11 +36,11 @@ class KategoriController extends Controller
             'slug' => Str::slug($request->name)
         ]);
 
-        return redirect('kategori/kategori')->with('message', 'Berhasil Membuat Kategori');
+        return redirect('inven/kategori')->with('message', 'Berhasil Membuat Kategori');
     }
 
 
-    public function show(Kategori $kategori)
+    public function show($id)
     {
         //
     }
@@ -61,11 +60,18 @@ class KategoriController extends Controller
     public function update(Request $request, $id)
     {
 
-        $kategori = Kategori::findorfail($id);
-        $kategori->name = $request->input('name');
-        $kategori->update();
+        $this->validate($request, [
+            'name' => 'required'
+        ]);
 
-        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil disimpan');
+        $kategori_data = [
+            'name' => $request->name,
+            'slug' => Str::slug($request->name)
+        ];
+
+        Kategori::whereId($id)->update($kategori_data);
+
+        return redirect()->route('kategori.index')->with('success', 'Kategori berhasil diedit');
     }
 
     /**
@@ -79,6 +85,38 @@ class KategoriController extends Controller
         $kategori = Kategori::findorfail($id);
         $kategori->delete();
         
-        return redirect('kategori/kategori')->with('success', 'Kategori berhasil dihapus');
+        return redirect('inven/kategori')->with('success', 'Kategori berhasil dihapus');
+    }
+
+    public function trash_list()
+    {
+        $kategori = Kategori::onlyTrashed()->paginate(1000);
+        return view('trash.kategori_trash', compact('kategori'));
+    }
+
+    public function restore($id = null)
+    {
+        if($id != null) {
+            $kategori = Kategori::onlyTrashed()
+                ->where('id', $id)
+                ->restore();
+        } else {
+            $kategori = Kategori::onlyTrashed()->restore();
+        }
+
+        return redirect('trash/kategori')->with('message', 'Kategori Berhasil Direstore');
+    }
+
+    public function delete_permanent($id = null)
+    {
+        if($id != null) {
+            $kategori = Kategori::onlyTrashed()
+                ->where('id', $id)
+                ->forceDelete();
+        } else {
+            $kategori = Kategori::onlyTrashed()->forceDelete();
+        }
+
+        return redirect('trash/kategori')->with('message', 'Kategori Berhasil Dihapus Permanent');
     }
 }
