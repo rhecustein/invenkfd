@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/trash/kategori', [KategoriController::class, 'trash_list'])->name('trash.kategori');
     Route::resource('inven', 'InventarisController');
     Route::resource('kategori', 'KategoriController');
+    Route::resource('user', 'UserController');
 });
 
 Route::get('restore/{id}', [InventarisController::class, 'restore']);

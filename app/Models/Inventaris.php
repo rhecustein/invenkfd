@@ -18,7 +18,9 @@ class Inventaris extends Model
         'keterangan_inventaris'
     ];
 
-    public function kategori(){
-        return $this->belongsTo('App\Models\Kategori');
+    public function kategori()
+    
+    {
+    return $this->belongsTo(kategori::class, 'id_kategori', 'id');
     }
 }

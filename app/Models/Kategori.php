@@ -12,4 +12,11 @@ class Kategori extends Model
 
     protected $fillable = ['name', 'slug'];
     protected $table = 'kategori';
+
+
+    public function kategori()
+    {
+        return $this->belongsTo('App\Models\Inventaris', 'id', 'id_kategori');
+    }
+    
 }
