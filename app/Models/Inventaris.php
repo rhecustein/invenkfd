@@ -19,7 +19,7 @@ class Inventaris extends Model
     ];
 
     public function kategori()
-    
+
     {
     return $this->belongsTo(kategori::class, 'id_kategori', 'id');
     }

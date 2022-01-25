@@ -16,7 +16,7 @@
 
     <!-- Datetime Picker CSS -->
     {{-- <link rel="stylesheet" href="html/demo/app/assets/css/datepicker.css"> --}}
-
+    @yield('css')
 </head>
 
 <body>
@@ -323,7 +323,7 @@
         });
     </script>
 
-
+    @stack('scripts')
 </body>
 
 </html>

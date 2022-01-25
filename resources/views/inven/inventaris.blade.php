@@ -1,7 +1,7 @@
 @extends('layouts.kfd')
 
 @section('content')
-
+<body>
     <div class="main">
         <div class="card">
             <div class="card-body">
@@ -38,5 +38,5 @@
             </div>
         </div>
     </div>
-
+</body>
 @endsection

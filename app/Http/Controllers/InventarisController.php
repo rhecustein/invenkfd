@@ -13,7 +13,7 @@ class InventarisController extends Controller
     {
         $inventaris = Inventaris::paginate(100000);
         $kategoris = Kategori::get();
-        
+
         return view('inven.inventaris',compact('inventaris','kategoris'));
     }
 
@@ -78,7 +78,7 @@ class InventarisController extends Controller
         ];
 
         $inventaris->update($update_data);
-        
+
         // $inventaris->nama_inventaris = $request->input('nama_inventaris');
         // $inventaris->qty_inventaris = $request->input('qty_inventaris');
         // $inventaris->id_kategori = $request->input('id_kategori');
