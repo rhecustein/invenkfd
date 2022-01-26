@@ -12,9 +12,9 @@ class InventarisController extends Controller
     public function index()
     {
         $inventaris = Inventaris::paginate(10);
-        $kategoris = Kategori::get();
+        $kategori = Kategori::get();
 
-        return view('inven.inventaris',compact('inventaris','kategoris'));
+        return view('inven.inventaris',compact('inventaris','kategori'));
     }
 
     public function create()
