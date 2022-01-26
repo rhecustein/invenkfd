@@ -11,7 +11,7 @@
 </div> --}}
 
 <form action="{{ url('update-data/'.$inventaris->id) }}" method="POST">
-    {{ csrf_field() }}
+    @csrf
     @method('PUT')
     <div class="mb-3">
         <label>Nama Barang</label>
@@ -21,10 +21,12 @@
         <div class="mb-3">
             <label>Kategori</label>
             <select class="form-control" name="id_kategori">
-                <option holder>Pilih Kategori</option>
                 @foreach ($kategori as $result)
-                    <option value="{{ $result->id }}"> {{ $result->name }} </option>
-                @endforeach
+            <option value="{{ $result->id }}" @if ($result->id == $inventaris->id_kategori)
+                selected
+                @endif
+                >{{ $result->name }}</option>
+            @endforeach
             </select>
         </div>
 

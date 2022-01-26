@@ -50,7 +50,7 @@
 
                     <li class="nav-menu-item">
                         <a href="{{ route('kategori') }}">
-                            <i class="feather icon-package"></i>
+                            <i class="feather icon-clipboard"></i>
                             <span>Kategori</span>
                         </a>
                     </li>

@@ -2,6 +2,12 @@
 
 @section('content')
 
+@if (Session::has('message'))
+<div class="alert alert-success" role="alert">
+    {{ Session('message') }}
+</div>
+@endif
+
     <div class="main">
         <div class="card">
             <div class="card-body">

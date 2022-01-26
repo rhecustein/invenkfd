@@ -5,6 +5,13 @@
 @endsection
 
 @section('content')
+
+@if (Session::has('message'))
+<div class="alert alert-success" role="alert">
+    {{ Session('message') }}
+</div>
+@endif
+
 <body>
     <div class="layout">
         <div class="horizontal-layout">

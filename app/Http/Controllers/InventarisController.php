@@ -84,7 +84,7 @@ class InventarisController extends Controller
         // $inventaris->id_kategori = $request->input('id_kategori');
         // $inventaris->keterangan_inventaris = $request->input('keterangan_inventaris');
 
-        return redirect('inven/inventaris')->with('message', 'Data Berhasil Disimpan');
+        return redirect('inven/inventaris')->with('message', 'Data Berhasil Diperbaharui');
     }
 
     public function destroy($id)

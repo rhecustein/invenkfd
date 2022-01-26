@@ -36,7 +36,7 @@ class KategoriController extends Controller
             'slug' => Str::slug($request->name)
         ]);
 
-        return redirect('inven/kategori')->with('message', 'Berhasil Membuat Kategori');
+    return redirect('inven/kategori')->with('success', 'Berhasil Membuat Kategori');
     }
 
 
@@ -104,7 +104,7 @@ class KategoriController extends Controller
             $kategori = Kategori::onlyTrashed()->restore();
         }
 
-        return redirect('trash/kategori')->with('message', 'Kategori Berhasil Direstore');
+        return redirect('trash/kategori')->with('success', 'Kategori Berhasil Direstore');
     }
 
     public function delete_permanent($id = null)
@@ -117,6 +117,6 @@ class KategoriController extends Controller
             $kategori = Kategori::onlyTrashed()->forceDelete();
         }
 
-        return redirect('trash/kategori')->with('message', 'Kategori Berhasil Dihapus Permanent');
+        return redirect('trash/kategori')->with('success', 'Kategori Berhasil Dihapus Permanent');
     }
 }
