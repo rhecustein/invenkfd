@@ -27,7 +27,7 @@
                                 <tr>
                                     <th scope="row">{{ $inven + $inventaris->firstitem() }}</th>
                                     <td>{{ $hasil->nama_inventaris }}</td>
-                                    <td>{{ $hasil->id_kategori }}</td>
+                                    <td>{{ $hasil->kategori->name }}</td>
                                     <td>{{ $hasil->qty_inventaris }}</td>
                                     <td>{{ $hasil->keterangan_inventaris }}</td>
                                     <td>
