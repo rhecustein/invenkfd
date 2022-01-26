@@ -15,7 +15,9 @@ class Inventaris extends Model
         'nama_inventaris',
         'qty_inventaris',
         'id_kategori',
-        'keterangan_inventaris'
+        'keterangan_inventaris',
+        'created_at',
+        'updated_at'
     ];
 
     public function kategori()

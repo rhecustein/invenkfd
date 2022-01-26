@@ -21,8 +21,8 @@
                                             <th>Kategori</th>
                                             <th>Jumlah</th>
                                             <th>keterangan</th>
-                                            <th>Tanggal</th>
-                                            <th>Update</th>
+                                            <th>Dibuat Tanggal</th>
+                                            <th>Di Update Tanggal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -32,6 +32,8 @@
                                                 <td>{{ $hasil->kategori->name }}</td>
                                                 <td>{{ $hasil->qty_inventaris }}</td>
                                                 <td>{{ $hasil->keterangan_inventaris }}</td>
+                                                <td>{{ $hasil->created_at }}</td>
+                                                <td>{{ $hasil->updated_at }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
