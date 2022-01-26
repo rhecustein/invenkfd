@@ -14,30 +14,33 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="mt-4">
-                                <table id="data-table" class="table table-hover">
-                                    <thead>
-                                        <tr>
-                                            <th>Nama Barang</th>
-                                            <th>Kategori</th>
-                                            <th>Jumlah</th>
-                                            <th>keterangan</th>
-                                            <th>Dibuat Tanggal</th>
-                                            <th>Di Update Tanggal</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($inventaris as $inven => $hasil)
+                                <div class="table-responsive">
+                                    <table id="data-table" class="table table-hover">
+                                        <thead>
                                             <tr>
-                                                <td>{{ $hasil->nama_inventaris }}</td>
-                                                <td>{{ $hasil->kategori->name }}</td>
-                                                <td>{{ $hasil->qty_inventaris }}</td>
-                                                <td>{{ $hasil->keterangan_inventaris }}</td>
-                                                <td>{{ $hasil->created_at }}</td>
-                                                <td>{{ $hasil->updated_at }}</td>
+                                                <th>Nama Barang</th>
+                                                <th>Kategori</th>
+                                                <th>Jumlah</th>
+                                                <th>keterangan</th>
+                                                <th>Dibuat Tanggal</th>
+                                                <th>Di Update Tanggal</th>
                                             </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            @foreach ($inventaris as $inven => $hasil)
+                                                <tr>
+                                                    <td>{{ $hasil->nama_inventaris }}</td>
+                                                    <td>{{ $hasil->kategori->name }}</td>
+                                                    <td>{{ $hasil->qty_inventaris }}</td>
+                                                    <td>{{ $hasil->keterangan_inventaris }}</td>
+                                                    <td>{{ $hasil->created_at }}</td>
+                                                    <td>{{ $hasil->updated_at }}</td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
                         </div>
                     </div>
