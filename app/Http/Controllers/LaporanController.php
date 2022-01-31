@@ -17,6 +17,6 @@ class LaporanController extends Controller
 
     public function exportExcel()
     {
-        return Excel::download(new LaporanExport, 'laporan.xlsx');
+        return Excel::download(new LaporanExport, 'laporan.xls');
     }
 }
