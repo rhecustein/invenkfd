@@ -25,6 +25,17 @@
             </li>
 
             <li class="nav-submenu">
+                <a href="{{ route('laporan') }}">
+                    <div class="nav-submenu-title">
+                        <span>
+                            <i class="icon-bar-chart feather"></i>
+                            <span>Laporan</span>
+                        </span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="nav-submenu">
                     <div class="nav-submenu-title">
                         <span>
                             <i class="feather icon-menu"></i>
