@@ -180,19 +180,19 @@
                                             </div>
                                        </div>
                                     </div>
-                                    <a href="javascript:void(0)" class="dropdown-item">
+                                    <a href="{{ route('profile') }}" class="dropdown-item">
                                        <div class="d-flex align-items-center">
                                            <i class="font-size-lg me-2 feather icon-user"></i>
                                            <span>Profile</span>
                                         </div>
                                     </a>
-                                    <a href="javascript:void(0)" class="dropdown-item">
+                                    <a href="{{ route('setting') }}" class="dropdown-item">
                                        <div class="d-flex align-items-center">
                                            <i class="font-size-lg me-2 feather icon-settings"></i>
                                            <span>Settings</span>
                                         </div>
                                     </a>
-                                    <a href="javascript:void(0)" class="dropdown-item">
+                                    <a href="{{ route('support') }}" class="dropdown-item">
                                        <div class="d-flex align-items-center"><i class="font-size-lg me-2 feather icon-life-buoy"></i>
                                         <span>Support</span>
                                     </div>

@@ -14,7 +14,7 @@
                     <div class="card">
                         <div class="card-body">
                             <a href="{{ route('exportExcel') }}">
-                                <button class="btn btn-primary me-2">Export Excel</button>
+                                <button class="btn btn-success">Export Excel</button>
                             </a>
                             <div class="mt-4">
                                 <div class="table-responsive">
