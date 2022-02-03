@@ -2,16 +2,41 @@
 
 namespace App\Exports;
 
-use App\Models\Laporan;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use App\Models\Inventaris;
+use Maatwebsite\Excel\Concerns\FromQuery;
+use Maatwebsite\Excel\Concerns\WithHeadings;
+use Maatwebsite\Excel\Concerns\WithMapping;
 
-class LaporanExport implements FromCollection
+class LaporanExport implements FromQuery, WithHeadings, WithMapping
 {
+    public function query()
+    {
+        return Inventaris::query();
+    }
+
+    public function headings(): array
+    {
+        return [
+            'Nama Barang',
+            'Kategori',
+            'Jumlah',
+            'keterangan',
+            'Dibuat Tanggal',
+            'Di Update Tanggal',
+        ];
+    }
     /**
     * @return \Illuminate\Support\Collection
     */
-    public function collection()
+    public function map($inventaris): array
     {
-        return Laporan::all();
+        return [
+            $inventaris->nama_inventaris,
+            $inventaris->kategori->name,
+            $inventaris->qty_inventaris,
+            $inventaris->keterangan_inventaris,
+            $inventaris->created_at,
+            $inventaris->updated_at,
+        ];
     }
 }

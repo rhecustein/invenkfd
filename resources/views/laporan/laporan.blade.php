@@ -13,6 +13,23 @@
                 <div class="main">
                     <div class="card">
                         <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <h2>Filter</h2>
+                                    <hr>
+                                    <p>Kategori</p>
+                                    <select id="filter-kategori" class="form-control" onchange="filter()">
+                                        <option value="">Pilih Kategori</option>
+                                        @foreach ($kategori as $category )
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
                             <a href="{{ route('exportExcel') }}">
                                 <button class="btn btn-success">Export Excel</button>
                             </a>
@@ -64,3 +81,8 @@
         } );
     </script>
 @endpush
+
+@section('js')
+    <script type="text/javascript">
+    </script>
+@endsection
