@@ -24,31 +24,32 @@ Route::group(['middleware' => 'auth'], function () {
     Route::resource('inven', 'InventarisController');
     Route::resource('kategori', 'KategoriController');
     Route::resource('user', 'UserController');
+
+    Route::get('restore/{id}', [InventarisController::class, 'restore']);
+
+    Route::get('restore/kategori/{id}', [KategoriController::class, 'restore']);
+
+    Route::get('delete-permanent/{id}', [InventarisController::class, 'delete_permanent']);
+
+    Route::get('delete-permanent/kategori/{id}', [KategoriController::class, 'delete_permanent']);
+
+    Route::post('kategori.store', [KategoriController::class, 'store']);
+
+    Route::post('store-data', [InventarisController::class, 'store']);
+
+    Route::get('kategori.edit/{id}', [KategoriController::class, 'edit']);
+
+    Route::put('update-kategori/{id}', [KategoriController::class, 'update']);
+
+    Route::get('kategori.delete/{id}', [KategoriController::class, 'destroy']);
+
+    Route::get('edit/{id}', [InventarisController::class, 'edit']);
+
+    Route::put('update-data/{id}', [InventarisController::class, 'update']);
+
+    Route::get('delete/{id}', [InventarisController::class, 'destroy']);
+    
 });
-
-Route::get('restore/{id}', [InventarisController::class, 'restore']);
-
-Route::get('restore/kategori/{id}', [KategoriController::class, 'restore']);
-
-Route::get('delete-permanent/{id}', [InventarisController::class, 'delete_permanent']);
-
-Route::get('delete-permanent/kategori/{id}', [KategoriController::class, 'delete_permanent']);
-
-Route::post('kategori.store', [KategoriController::class, 'store']);
-
-Route::post('store-data', [InventarisController::class, 'store']);
-
-Route::get('kategori.edit/{id}', [KategoriController::class, 'edit']);
-
-Route::put('update-kategori/{id}', [KategoriController::class, 'update']);
-
-Route::get('kategori.delete/{id}', [KategoriController::class, 'destroy']);
-
-Route::get('edit/{id}', [InventarisController::class, 'edit']);
-
-Route::put('update-data/{id}', [InventarisController::class, 'update']);
-
-Route::get('delete/{id}', [InventarisController::class, 'destroy']);
 
 Route::get('/', function () {
     return view('welcome');

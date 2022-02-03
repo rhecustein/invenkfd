@@ -197,11 +197,20 @@
                                         <span>Support</span>
                                     </div>
                                     </a>
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                       <div class="d-flex align-items-center"><i class="font-size-lg me-2 feather icon-power"></i>
-                                        <span>Sign Out</span>
-                                    </div>
+
+                                    <a>
+                                        <form action="{{ route('logout') }}" method="POST">
+                                            
+                                            @csrf
+                                            <button type="submit" class="dropdown-item btn">
+                                                <div class="d-flex align-items-center "><i class="font-size-lg me-2 feather icon-power"></i>
+                                                    <span>Sign Out</span>
+                                                </div>
+                                            </button>
+
+                                        </form>
                                     </a>
+
                                  </div>
                             </div>
                         </div>
