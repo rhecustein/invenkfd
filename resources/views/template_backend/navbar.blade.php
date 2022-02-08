@@ -14,6 +14,17 @@
             </li>
 
             <li class="nav-submenu">
+                <a href="{{ route('inventaris') }}">
+                    <div class="nav-submenu-title">
+                        <span>
+                            <i class="feather icon-package"></i>
+                            <span>Inventory</span>
+                        </span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="nav-submenu">
                 <a href="{{ route('mutasi') }}">
                     <div class="nav-submenu-title">
                         <span>
@@ -36,15 +47,14 @@
             </li>
 
             <li class="nav-submenu">
-                    <div class="nav-submenu-title">
-                        <span>
-                            <i class="feather icon-menu"></i>
-                            <span>Others</span>
-                        </span>
-                        <i class="nav-submenu-arrow caret-bottom"></i>
-                    </div>
+                <div class="nav-submenu-title">
+                    <span>
+                        <i class="feather icon-menu"></i>
+                        <span>Others</span>
+                    </span>
+                    <i class="nav-submenu-arrow caret-bottom"></i>
+                </div>
                 <ul class="nav-menu">
-
                     <li class="nav-menu-item">
                         <a href="{{ route('trash') }}">
                             <i class="feather icon-trash-2"></i>
@@ -65,17 +75,8 @@
                             <span>Kategori</span>
                         </a>
                     </li>
-
-                    <li class="nav-menu-item">
-                        <a href="{{ route('inventaris') }}">
-                                    <i class="feather icon-package"></i>
-                                    <span>Inventory</span>
-                        </a>
-                    </li>
-
                 </ul>
             </li>
-
         </ul>
     </div>
 </div>

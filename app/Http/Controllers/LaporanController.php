@@ -9,8 +9,6 @@ use App\Models\Laporan;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 
-use function GuzzleHttp\Promise\all;
-
 class LaporanController extends Controller
 {
     public function index()
