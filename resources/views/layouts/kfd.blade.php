@@ -165,7 +165,7 @@
                                     <div class="avatar avatar-circle avatar-image" style="width: 35px; height: 35px; line-height: 35px;">
                                         <img src="{{ asset('html/demo/app/assets/images/avatars/VakuMinion.jpeg') }}" alt="">
                                     </div>
-                                    <span class="fw-bold mx-1">Pais X Jahwa</span>
+                                    <span class="fw-bold mx-1">{{ Auth::user()->name }}</span>
                                     <i class="feather icon-chevron-down"></i>
                                 </div>
                                 <div class="dropdown-menu dropdown-menu-end">

@@ -42,7 +42,9 @@
         <label>Keterangan Barang</label>
         <textarea class="form-control" name="keterangan_inventaris"></textarea>
     </div>
-    <a href="{{ route('inventaris') }}"><button class="btn btn-primary btn-block">Simpan Barang</button></a>
+    <div class="mb-3">
+        <button class="btn btn-primary btn-block">Simpan Barang</button>
+    </div>
 </form>
 
 
