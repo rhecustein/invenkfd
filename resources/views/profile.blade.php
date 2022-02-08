@@ -23,10 +23,6 @@
                     </div>
                     <div class="col-6 col-md-6">
                         <div class="mb-3">
-                            <p>Tanggal Lahir</p>
-                            <input type="text" class="form-control" value="" name="tanggal_lahir" id="formGroupExampleInput">
-                        </div>
-                        <div class="mb-3">
                             <p>Email</p>
                             <input type="text" class="form-control" value="{{ Auth::user()->email }}" name="email" id="formGroupExampleInput">
                         </div>
