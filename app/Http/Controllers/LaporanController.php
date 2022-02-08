@@ -20,7 +20,7 @@ class LaporanController extends Controller
         return view('laporan.laporan', compact('inventaris','kategori'));
     }
 
-    public function exportExcel(Request $request)
+    public function exportExcel()
     {
         return Excel::download(new LaporanExport, 'laporan.xlsx');
     }

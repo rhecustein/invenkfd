@@ -200,7 +200,7 @@
 
                                     <a>
                                         <form action="{{ route('logout') }}" method="POST">
-                                            
+
                                             @csrf
                                             <button type="submit" class="dropdown-item btn">
                                                 <div class="d-flex align-items-center "><i class="font-size-lg me-2 feather icon-power"></i>
@@ -327,9 +327,6 @@
     <script src="{{ asset('html/demo/app/assets/js/datepicker.js') }}"></script>
 
     <script type="text/javascript">
-        $(function () {
-            $('.datepicker').datepicker()
-        });
     </script>
 
     @stack('scripts')

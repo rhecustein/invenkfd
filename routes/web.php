@@ -48,7 +48,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('update-data/{id}', [InventarisController::class, 'update']);
 
     Route::get('delete/{id}', [InventarisController::class, 'destroy']);
-    
 });
 
 Route::get('/', function () {
