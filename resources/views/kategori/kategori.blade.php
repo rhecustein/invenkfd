@@ -40,8 +40,10 @@
                                                 <td>{{ $result + $kategori->firstitem() }}</td>
                                                 <td>{{ $hasil->name }}</td>
                                                 <td>
-                                                    <a href="{{ url('kategori.edit/'.$hasil->id) }}" class="btn btn-success">Edit</a>
-                                                    <a href="{{ url('kategori.delete/'.$hasil->id) }}" class="btn btn-danger">Delete</a>
+                                                    <div class="d-grid gap-2 d-md-block">
+                                                        <a href="{{ url('kategori.edit/'.$hasil->id) }}" class="btn btn-success">Edit</a>
+                                                        <a href="{{ url('kategori.delete/'.$hasil->id) }}" class="btn btn-danger">Delete</a>
+                                                    </div>
                                                 </td>
                                             </tr>
                                             @endforeach

@@ -27,8 +27,10 @@
                                 <th scope="row">{{ $result + $kategori->firstitem() }}</th>
                                 <td>{{ $hasil->name }}</td>
                                 <td>
-                                    <a href="{{ url('restore/kategori/'.$hasil->id) }}" class="btn btn-success">Restore</a>
-                                    <a href="{{ url('delete-permanent/kategori/'.$hasil->id) }}" class="btn btn-danger">Delete Permanent</a>
+                                    <div class="d-grid gap-2 d-md-block">
+                                        <a href="{{ url('restore/kategori/'.$hasil->id) }}" class="btn btn-success">Restore</a>
+                                        <a href="{{ url('delete-permanent/kategori/'.$hasil->id) }}" class="btn btn-danger">Delete Permanent</a>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

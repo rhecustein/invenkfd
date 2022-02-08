@@ -44,8 +44,10 @@
                                                     <td>{{ $hasil->qty_inventaris }}</td>
                                                     <td>{{ $hasil->keterangan_inventaris }}</td>
                                                     <td>
-                                                        <a href="{{ url('edit/'.$hasil->id) }}" class="btn btn-success">Edit</a>
-                                                        <a href="{{ url('delete/'.$hasil->id) }}" class="btn btn-danger">Delete</a>
+                                                        <div class="d-grid gap-2 d-md-block">
+                                                            <a href="{{ url('edit/'.$hasil->id) }}" class="btn btn-success">Edit</a>
+                                                            <a href="{{ url('delete/'.$hasil->id) }}" class="btn btn-danger">Delete</a>
+                                                        </div>
                                                     </td>
                                                 </tr>
                                             @endforeach
