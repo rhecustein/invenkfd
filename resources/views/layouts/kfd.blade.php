@@ -175,8 +175,8 @@
                                                 <img src="{{ asset('html/demo/app/assets/images/avatars/VakuMinion.jpeg') }}" alt="">
                                             </div>
                                             <div class="d-flex flex-column ms-1">
-                                                <span class="fw-bold text-dark">Pais X Jahwa</span>
-                                                <span class="font-size-sm">Pais@wangy.com</span>
+                                                <span class="fw-bold text-dark">{{Auth::user()->name}}</span>
+                                                <span class="font-size-sm">{{Auth::user()->email}}</span>
                                             </div>
                                        </div>
                                     </div>
