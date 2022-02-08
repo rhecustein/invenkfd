@@ -13,6 +13,8 @@
                 <div class="main">
                     <div class="card">
                         <div class="card-body">
+                            <h2>Mutasi</h2>
+                            <hr>
                             <div class="mt-4">
                                 <div class="table-responsive">
                                     <table id="data-table" class="table table-hover">

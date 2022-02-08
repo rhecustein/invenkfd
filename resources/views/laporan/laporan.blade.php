@@ -17,7 +17,8 @@
                                 <h2>Filter</h2>
                                 <hr>
                                 <div class="col-md-4">
-                                    <p>Kategori</p>
+                                    <br>
+                                    <label>Kategori</label>
                                     <select id="filter-kategori" class="form-control filter">
                                         <option value="">Pilih Kategori</option>
                                         @foreach ($kategori as $category)
@@ -26,11 +27,13 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4">
-                                    <p>Date Of Birth From</p>
+                                    <br>
+                                    <label>Date Of Birth From</label>
                                     <input type="date" class="form-control" id="fromDate" name="fromDate">
                                 </div>
                                 <div class="col-md-4">
-                                    <p>Date Of Birth To</p>
+                                    <br>
+                                    <label>Date Of Birth To</label>
                                     <input type="date" class="form-control" id="toDate" name="toDate">
                                 </div>
                             </div>

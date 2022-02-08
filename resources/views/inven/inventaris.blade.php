@@ -19,6 +19,8 @@
                 <div class="main">
                     <div class="card">
                         <div class="card-body">
+                            <h2>Inventory</h2>
+                            <hr>
                             <a href="{{ route('inven.create') }}"><button class="btn btn-primary me-2">Tambah</button></a>
                             <div class="mt-4">
                                 <div class="table-responsive">
@@ -55,7 +57,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </body>
