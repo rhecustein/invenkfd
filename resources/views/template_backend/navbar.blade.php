@@ -58,7 +58,7 @@
                     <li class="nav-menu-item">
                         <a href="{{ route('trash') }}">
                             <i class="feather icon-trash-2"></i>
-                            <span>Trash List</span>
+                            <span>Inventory Trash</span>
                         </a>
                     </li>
 

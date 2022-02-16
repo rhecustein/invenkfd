@@ -222,6 +222,65 @@
             @include('template_backend.navbar')
 
             <!-- Side Nav START -->
+            <div class="side-nav vertical-menu nav-menu-light scrollable">
+                <div class="nav-logo">
+                    <div class="w-100 logo">
+                        <img class="img-fluid" src="{{ asset('html/demo/app/assets/images/logo/logo.png') }}" style="max-height: 70px;" alt="logo">
+                    </div>
+                    <div class="mobile-close">
+                        <i class="icon-arrow-left feather"></i>
+                    </div>
+                 </div>
+                 <ul class="nav-menu">
+                    <li class="nav-group-title">PAGES</li>
+                    <li class="nav-menu-item">
+                        <a href="{{ url('/dashboard') }}">
+                            <i class="feather icon-home"></i>
+                            <span class="nav-menu-item-title">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a href="{{ route('mutasi') }}">
+                            <i class="feather icon-tag"></i>
+                            <span class="nav-menu-item-title">Mutasi</span>
+                        </a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a href="{{ route('laporan') }}">
+                            <i class="icon-bar-chart feather"></i>
+                            <span class="nav-menu-item-title">Laporan</span>
+                        </a>
+                    </li>
+                    <li class="nav-group-title">Inventory</li>
+                    <li class="nav-menu-item">
+                        <a href="{{ route('inventaris') }}">
+                            <i class="feather icon-package"></i>
+                            <span class="nav-menu-item-title">Inventory</span>
+                        </a>
+                    </li>
+                    <li class="nav-menu-item">
+                        <a href="{{ route('trash') }}">
+                            <i class="feather icon-trash-2"></i>
+                            <span class="nav-menu-item-title">Inventory Trash</span>
+                        </a>
+                    </li>
+                    <li class="nav-group-title">Kategori</li>
+                    <li class="nav-submenu">
+                        <li class="nav-menu-item">
+                            <a href="{{ route('kategori') }}">
+                                <i class="feather icon-clipboard"></i>
+                                <span class="nav-menu-item-title">Kategori</span>
+                            </a>
+                        </li>
+                        <li class="nav-menu-item">
+                            <a href="{{ route('trash.kategori') }}">
+                                <i class="feather icon-trash"></i>
+                                <span class="nav-menu-item-title">Kategori Trash</span>
+                            </a>
+                        </li>
+                    </li>
+                </ul>
+            </div>
             <!-- Side Nav END -->
 
             <!-- Content START -->
