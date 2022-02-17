@@ -65,7 +65,7 @@
                     <li class="nav-menu-item">
                         <a href="{{ route('trash.kategori') }}">
                             <i class="feather icon-trash"></i>
-                            <span>Trash Lis Kategori</span>
+                            <span>Kategori Trash</span>
                         </a>
                     </li>
 

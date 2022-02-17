@@ -13,32 +13,34 @@
                 <div class="main">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row">
-                                <h2>Filter</h2>
-                                <hr>
-                                <div class="col-md-4">
-                                    <br>
-                                    <label>Kategori</label>
-                                    <select id="filter-kategori" class="form-control filter">
-                                        <option value="">Pilih Kategori</option>
-                                        @foreach ($kategori as $category)
-                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                        @endforeach
-                                    </select>
+                            <form class="offset">
+                                <div class="row">
+                                    <h2>Filter</h2>
+                                    <hr>
+                                    <div class="form-group col-md-4">
+                                        <br>
+                                        <label>Kategori</label>
+                                        <select id="filter-kategori" class="form-control filter">
+                                            <option value="">Pilih Kategori</option>
+                                            @foreach ($kategori as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <br>
+                                        <label>Date Of Birth From</label>
+                                        <input type="datetime-local" class="form-control" id="start_date" name="fromDate">
+                                    </div>
+                                    <div class="form-group col-md-4">
+                                        <br>
+                                        <label>Date Of Birth To</label>
+                                        <input type="datetime-local" class="form-control" id="end_date" name="toDate">
+                                    </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <br>
-                                    <label>Date Of Birth From</label>
-                                    <input type="date" class="form-control" id="fromDate" name="fromDate">
-                                </div>
-                                <div class="col-md-4">
-                                    <br>
-                                    <label>Date Of Birth To</label>
-                                    <input type="date" class="form-control" id="toDate" name="toDate">
-                                </div>
-                            </div>
-                            <br>
-                            <button type="submit" class="btn btn-warning">Filter</button>
+                                <br>
+                                <button type="submit" class="btn btn-warning" id="filter">Filter</button>
+                            </form>
                         </div>
                     </div>
                     <div class="card">
@@ -93,5 +95,18 @@
         $(document).ready( function () {
             $('#data-table').DataTable();
         } );
+
+        const table = $('#audittrail-table');
+        table.on('preXhr.dt',function(e,settings,data){
+            data.start_date = $('#start_date').val();
+            data.end_date = $('#end_date').val();
+
+            console.log(data.start_date, data.end_date);
+        })
+
+        $('#filter').on('click',function () {
+            table.DataTable().ajax.reload();
+            return false;
+        })
     </script>
 @endpush
