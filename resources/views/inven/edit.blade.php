@@ -13,33 +13,48 @@
 <form action="{{ url('update-data/'.$inventaris->id) }}" method="POST">
     @csrf
     @method('PUT')
-    <div class="mb-3">
-        <label>Nama Barang</label>
-        <input type="text" class="form-control" value="{{ $inventaris->nama_inventaris }}" name="nama_inventaris" id="formGroupExampleInput">
-    </div>
+    <div class="layout">
+        <div class="horizontal-layout">
+            <div class="container">
+                <div class="main">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Inventory <span class="badge bg-primary">Edit</span></h2>
+                            <hr>
+                            <div class="mb-3">
+                                <label>Nama Barang</label>
+                                <input type="text" class="form-control" value="{{ $inventaris->nama_inventaris }}" name="nama_inventaris" id="formGroupExampleInput">
+                            </div>
 
-        <div class="mb-3">
-            <label>Kategori</label>
-            <select class="form-control" name="id_kategori">
-                @foreach ($kategori as $result)
-            <option value="{{ $result->id }}" @if ($result->id == $inventaris->id_kategori)
-                selected
-                @endif
-                >{{ $result->name }}</option>
-            @endforeach
-            </select>
+                                <div class="mb-3">
+                                    <label>Kategori</label>
+                                    <select class="form-control" name="id_kategori">
+                                        @foreach ($kategori as $result)
+                                    <option value="{{ $result->id }}" @if ($result->id == $inventaris->id_kategori)
+                                        selected
+                                        @endif
+                                        >{{ $result->name }}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+
+                            <div class="mb-3">
+                                <label for="">Jumlah</label>
+                                <input type="text" class="form-control" value="{{ $inventaris->qty_inventaris }}" name="qty_inventaris" id="formGroupExampleInput">
+                            </div>
+
+                            <div class="mb-3">
+                                <label>Keterangan Barang</label>
+                                <input type="text" class="form-control" value="{{ $inventaris->keterangan_inventaris }}" name="keterangan_inventaris" id="formGroupExampleInput">
+                            </div>
+                            <a href="{{ route('inventaris') }}"><button type="submit" class="btn btn-success btn-block">Update</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-
-    <div class="mb-3">
-        <label for="">Jumlah</label>
-        <input type="text" class="form-control" value="{{ $inventaris->qty_inventaris }}" name="qty_inventaris" id="formGroupExampleInput">
     </div>
 
-    <div class="mb-3">
-        <label>Keterangan Barang</label>
-        <input type="text" class="form-control" value="{{ $inventaris->keterangan_inventaris }}" name="keterangan_inventaris" id="formGroupExampleInput">
-    </div>
-    <a href="{{ route('inventaris') }}"><button type="submit" class="btn btn-primary btn-block">Update</button></a>
 </form>
 
 

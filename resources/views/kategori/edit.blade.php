@@ -13,12 +13,25 @@
 <form action="{{ url('update-kategori/'.$kategori->id) }}" method="POST">
     @csrf
     @method('PUT')
-    <div class="mb-3">
-        <label>Nama Kategori</label>
-        <input type="text" class="form-control" value="{{ $kategori->name }}" name="name" id="formGroupExampleInput">
+    <div class="layout">
+        <div class="horizontal-layout">
+            <div class="container">
+                <div class="main">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Kategori <span class="badge bg-primary">Edit</span></h2>
+                            <hr>
+                            <div class="mb-3">
+                                <label>Nama Kategori</label>
+                                <input type="text" class="form-control" value="{{ $kategori->name }}" name="name" id="formGroupExampleInput">
+                            </div>
+                            <a href="{{ route('kategori') }}"><button type="submit" class="btn btn-success btn-block">Update</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <a href="{{ route('kategori') }}"><button type="submit" class="btn btn-primary btn-block">Update</button></a>
 </form>
 
 

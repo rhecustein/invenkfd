@@ -15,7 +15,7 @@
                         <div class="card-body">
                             <form class="offset">
                                 <div class="row">
-                                    <h2>Filter</h2>
+                                    <h4>Laporan <span class="badge bg-primary">Filter</span></h4>
                                     <hr>
                                     <div class="form-group col-md-4">
                                         <br>
@@ -45,6 +45,8 @@
                     </div>
                     <div class="card">
                         <div class="card-body">
+                            <h2>Data Laporan</h2>
+                            <hr>
                             <a href="{{ route('exportExcel') }}">
                                 <button class="btn btn-success">Export Excel</button>
                             </a>
@@ -95,18 +97,5 @@
         $(document).ready( function () {
             $('#data-table').DataTable();
         } );
-
-        const table = $('#audittrail-table');
-        table.on('preXhr.dt',function(e,settings,data){
-            data.start_date = $('#start_date').val();
-            data.end_date = $('#end_date').val();
-
-            console.log(data.start_date, data.end_date);
-        })
-
-        $('#filter').on('click',function () {
-            table.DataTable().ajax.reload();
-            return false;
-        })
     </script>
 @endpush
