@@ -21,8 +21,7 @@ class LaporanExport implements FromQuery, WithHeadings, WithMapping
             'Kategori',
             'Jumlah',
             'keterangan',
-            'Dibuat Tanggal',
-            'Di Update Tanggal',
+            'Dibuat Tanggal'
         ];
     }
     /**
@@ -36,7 +35,6 @@ class LaporanExport implements FromQuery, WithHeadings, WithMapping
             $inventaris->qty_inventaris,
             $inventaris->keterangan_inventaris,
             $inventaris->created_at,
-            $inventaris->updated_at,
         ];
     }
 }

@@ -12,12 +12,14 @@ use App\Http\Controllers\SupportController;
 Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/inven/inventaris', [InventarisController::class, 'index'])->name('inventaris');
-    
+
     Route::get('/inven/kategori', [KategoriController::class, 'index'])->name('kategori');
 
     Route::get('/mutasi', [MutasiController::class, 'index'])->name('mutasi');
 
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
+
+    Route::get('filter/tanggal', [LaporanController::class, 'laporanFilter'])->name('filter/tanggal');
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
@@ -44,6 +46,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('delete-permanent/kategori/{id}', [KategoriController::class, 'delete_permanent']);
 
     Route::post('kategori.store', [KategoriController::class, 'store']);
+
+    Route::post('laporan_filter', [LaporanController::class, 'laporanFilter']);
 
     Route::post('store-data', [InventarisController::class, 'store']);
 

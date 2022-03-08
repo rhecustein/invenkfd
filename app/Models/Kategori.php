@@ -16,7 +16,7 @@ class Kategori extends Model
 
     public function kategori()
     {
-        return $this->belongsTo('App\Models\Inventaris', 'id', 'id_kategori');
+        return $this->hasMany(Inventaris::class, 'id', 'id_kategori');
     }
-    
+
 }

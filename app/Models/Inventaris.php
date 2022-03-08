@@ -20,9 +20,7 @@ class Inventaris extends Model
         'updated_at'
     ];
 
-    public function kategori()
-
-    {
-    return $this->belongsTo(kategori::class, 'id_kategori', 'id');
+    public function kategori(){
+        return $this->belongsTo(Kategori::class, 'id_kategori', 'id');
     }
 }

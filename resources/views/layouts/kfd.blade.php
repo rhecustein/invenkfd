@@ -13,6 +13,7 @@
 
     <!-- Core css -->
     <link href="{{ asset('html/demo/app/assets/css/app.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 
     <!-- Datetime Picker CSS -->
     {{-- <link rel="stylesheet" href="html/demo/app/assets/css/datepicker.css"> --}}
@@ -384,9 +385,10 @@
     <!-- DateTimePicker Bootstrap -->
     <script src="html/demo/app/assets/js/datepicker.js"></script>
     <script src="{{ asset('html/demo/app/assets/js/datepicker.js') }}"></script>
+    <script src="https://momentjs.com/downloads/moment-with-locales.min.js"></script>
 
-    <script type="text/javascript">
-    </script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+
 
     @stack('scripts')
 </body>

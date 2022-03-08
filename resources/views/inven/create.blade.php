@@ -18,32 +18,46 @@
 
 <form action="{{ url('store-data') }}" method="POST" enctype="multipart/form-data">
     @csrf
-    <div class="mb-3">
-        <label>Nama Barang</label>
-        <input type="text" class="form-control" name="nama_inventaris" id="formGroupExampleInput">
-    </div>
+    <div class="layout">
+        <div class="horizontal-layout">
+            <div class="container">
+                <div class="main">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Inventory <span class="badge bg-primary">Create</span></h2>
+                            <hr>
+                            <div class="mb-3">
+                                <label>Nama Barang</label>
+                                <input type="text" class="form-control" name="nama_inventaris" id="formGroupExampleInput">
+                            </div>
 
-    <div class="mb-3">
-        <label>Kategori</label>
-        <select class="form-control" name="id_kategori">
-            <option holder>Pilih Kategori</option>
-            @foreach ($kategori as $result)
-            <option value="{{ $result->id }}"> {{ $result->name }} </option>
-            @endforeach
-        </select>
-    </div>
+                            <div class="mb-3">
+                                <label>Kategori</label>
+                                <select class="form-control" name="id_kategori">
+                                    <option holder>Pilih Kategori</option>
+                                    @foreach ($kategori as $result)
+                                    <option value="{{ $result->id }}"> {{ $result->name }} </option>
+                                    @endforeach
+                                </select>
+                            </div>
 
-    <div class="mb-3">
-        <label for="">Jumlah</label>
-        <input type="text" class="form-control" name="qty_inventaris" id="formGroupExampleInput">
-    </div>
+                            <div class="mb-3">
+                                <label for="">Jumlah</label>
+                                <input type="text" class="form-control" name="qty_inventaris" id="formGroupExampleInput">
+                            </div>
 
-    <div class="mb-3">
-        <label>Keterangan Barang</label>
-        <textarea class="form-control" name="keterangan_inventaris"></textarea>
-    </div>
-    <div class="mb-3">
-        <button class="btn btn-primary btn-block">Simpan Barang</button>
+                            <div class="mb-3">
+                                <label>Keterangan Barang</label>
+                                <textarea class="form-control" name="keterangan_inventaris"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <button class="btn btn-primary btn-block">Simpan Barang</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </form>
 

@@ -19,7 +19,7 @@
                 <div class="main">
                     <div class="card">
                         <div class="card-body">
-                            <h2>Inventory <span class="badge bg-primary">Edit</span></h2>
+                            <h2>Inventory <span class="badge bg-success">Edit</span></h2>
                             <hr>
                             <div class="mb-3">
                                 <label>Nama Barang</label>
