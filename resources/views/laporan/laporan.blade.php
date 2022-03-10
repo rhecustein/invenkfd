@@ -1,8 +1,8 @@
 @extends('layouts.kfd')
 
 @section('css')
-    <link rel="stylesheet" href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
-    <link rel="stylesheet" href="{{ asset('html/demo/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
 
 @endsection
 
@@ -34,17 +34,13 @@
                                         <div class="form-group col-md-4">
                                             <br>
                                             <label for="date">From</label>
-                                            <input type="date" class="form-control input-sm" id="fromdate" name="fromdate" >
+                                            <input type="date" class="form-control filter" id="fromdate" name="fromdate" onchange="filter()">
                                         </div>
                                         <div class="form-group col-md-4">
                                             <br>
                                             <label for="date">To</label>
-                                            <input type="date" class="form-control input-sm" id="todate" name="todate" >
+                                            <input type="date" class="form-control input-sm" id="todate" name="todate" onchange="filter()">
                                         </div>
-                                        {{-- <div class="form-group col-md-4">
-                                            <br>
-                                            <button type="submit" class="btn btn-warning" name="search" title="search">Filter</button>
-                                        </div> --}}
                                     </form>
                                 </div>
                             </form>
@@ -54,9 +50,6 @@
                         <div class="card-body">
                             <h2>Data Laporan</h2>
                             <hr>
-                            <a href="{{ route('exportExcel') }}">
-                                <button class="btn btn-success">Export Excel</button>
-                            </a>
                             <div class="mt-4">
                                 <div class="table-responsive">
                                     <table id="filterTable" class="table table-hover">
@@ -96,15 +89,21 @@
 @endsection
 
 @push('scripts')
-    <script src="//cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
 
     <script>
 
     const table = $('#filterTable').DataTable({
-        "pageLength": 5,
-        "lengthMenu": [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
+        "pageLength": 10,
+        "lengthMenu": [[10, 25, 50, 100], [10, 25, 50, 100]],
         "bLengthChange": true,
         "bFilter": true,
         "processing": true,
@@ -115,9 +114,13 @@
             type: "POST",
             data:function(d){
                 d._token = "{{csrf_token()}}",
-                d.kateg = $("#kateg").val()
+                d.kateg = $("#kateg").val(),
+                d.fromdate = $("#fromdate").val(),
+                d.todate = $("#todate").val()
             }
         },
+        dom: 'Bfrtip',
+        buttons: ['copy', 'csv', 'excel', 'pdf', 'print'],
         columns:[
             {
                 "render":function(data, type, row, meta){

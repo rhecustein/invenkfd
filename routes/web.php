@@ -27,8 +27,6 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/support', [SupportController::class, 'index'])->name('support');
 
-    Route::get('/exportExcel', [LaporanController::class, 'exportExcel'])->name('exportExcel');
-
     Route::get('/trash', [InventarisController::class, 'trash_list'])->name('trash');
 
     Route::get('/trash/kategori', [KategoriController::class, 'trash_list'])->name('trash.kategori');
