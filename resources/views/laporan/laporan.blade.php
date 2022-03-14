@@ -134,7 +134,7 @@
         "bFilter": true,
         "processing": true,
         "bServerSide": true,
-        "order": [[ 0, "asc" ]],
+        "order": [[ 1, "asc" ]],
         "ajax": {
             url: "{{url('laporan_filter')}}",
             type: "POST",
