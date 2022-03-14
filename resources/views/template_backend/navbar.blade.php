@@ -13,6 +13,8 @@
                 </a>
             </li>
 
+            @if (auth()->user()->level == 'admin')
+
             <li class="nav-submenu">
                 <a href="{{ route('inventaris') }}">
                     <div class="nav-submenu-title">
@@ -23,6 +25,8 @@
                     </div>
                 </a>
             </li>
+                
+            @endif
 
             <li class="nav-submenu">
                 <a href="{{ route('mutasi') }}">
@@ -46,6 +50,8 @@
                 </a>
             </li>
 
+            @if (auth()->user()->level == 'admin')
+            
             <li class="nav-submenu">
                 <div class="nav-submenu-title">
                     <span>
@@ -89,6 +95,8 @@
                     </li>
                 </ul>
             </li>
+            @endif
+
         </ul>
     </div>
 </div>

@@ -9,17 +9,17 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SupportController;
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
 
     Route::get('/inven/inventaris', [InventarisController::class, 'index'])->name('inventaris');
 
     Route::get('/inven/kategori', [KategoriController::class, 'index'])->name('kategori');
 
-    Route::get('/mutasi', [MutasiController::class, 'index'])->name('mutasi');
+    // Route::get('/mutasi', [MutasiController::class, 'index'])->name('mutasi');
 
-    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
+    // Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
 
-    Route::get('filter/tanggal', [LaporanController::class, 'laporanFilter'])->name('filter/tanggal');
+    // Route::get('filter/tanggal', [LaporanController::class, 'laporanFilter'])->name('filter/tanggal');
 
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
@@ -60,6 +60,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('update-data/{id}', [InventarisController::class, 'update']);
 
     Route::get('delete/{id}', [InventarisController::class, 'destroy']);
+});
+
+Route::group(['middleware' => ['auth', 'ceklevel:admin,user']], function (){
+
+    Route::get('/mutasi', [MutasiController::class, 'index'])->name('mutasi');
+
+    Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
+
+    Route::get('filter/tanggal', [LaporanController::class, 'laporanFilter'])->name('filter/tanggal');
+
 });
 
 Route::get('/', function () {
