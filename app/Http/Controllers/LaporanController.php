@@ -14,8 +14,6 @@ use Symfony\Component\Console\Input\Input;
 
 class LaporanController extends Controller
 {
-    private $data;
-
     public function index(Request $request)
     {
         $inventaris = Inventaris::get();
@@ -33,6 +31,7 @@ class LaporanController extends Controller
         $order_by = $request->input("order.0.column");
 
         $columns = [
+            'id',
             'nama_inventaris',
             'id_kategori',
             'qty_inventaris',

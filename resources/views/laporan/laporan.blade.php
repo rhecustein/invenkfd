@@ -17,12 +17,11 @@
                         <div class="card-body">
                             <form class="offset">
                                 <div class="row">
-                                    <h4>Laporan <span class="badge bg-primary">Filter</span></h4>
+                                    <h4>Laporan <span class="badge bg-primary mb-2">Filter</span></h4>
                                     <hr>
                                     <div class="form-group col-md-4">
-                                        <br>
                                         <label>Kategori</label>
-                                        <select id="kateg" name="categ" class="form-control filter" onchange="filter()">
+                                        <select id="kateg" name="categ" class="form-control filter mt-2" onchange="filter()">
                                             <option value="">Pilih Kategori</option>
                                             @foreach ($kategori as $filter)
                                             <option value="{{ $filter->id }}">{{ $filter->name }}</option>
@@ -32,16 +31,27 @@
                                     <form action="{{ route('filter/tanggal') }}" method="GET">
                                         @csrf
                                         <div class="form-group col-md-4">
-                                            <br>
                                             <label for="date">From</label>
-                                            <input type="date" class="form-control filter" id="fromdate" name="fromdate" onchange="filter()">
+                                            <input type="date" class="form-control mt-2" id="fromdate" name="fromdate" onchange="filter()">
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <br>
                                             <label for="date">To</label>
-                                            <input type="date" class="form-control input-sm" id="todate" name="todate" onchange="filter()">
+                                            <input type="date" class="form-control mt-2 " id="todate" name="todate" onchange="filter()">
                                         </div>
                                     </form>
+
+                                    <div class="container mt-4 ">
+                                        <ul class="nav-menu nav-menu-horizontal">
+                                            <li class="nav-submenu">
+                                                <a href="{{ route('laporan') }}">
+                                                    <div class="nav-submenu-title btn btn-warning">
+                                                        <i class="icon-rotate-cw feather text-white"></i>
+                                                        <span class="text-white">Reset</span>
+                                                    </div>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </form>
                         </div>
@@ -50,31 +60,47 @@
                         <div class="card-body">
                             <h2>Data Laporan</h2>
                             <hr>
-                            <div class="mt-4">
-                                <div class="table-responsive">
-                                    <table id="filterTable" class="table table-hover">
-                                        <thead>
-                                            <tr>
-                                                <th>Nama Barang</th>
-                                                <th>Kategori</th>
-                                                <th>Jumlah</th>
-                                                <th>keterangan</th>
-                                                <th>Tanggal</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($inventaris as $inven)
-                                                <tr>
-                                                    <td>{{ $inven->nama_inventaris }}</td>
-                                                    <td>{{ $inven->kategori->name }}</td>
-                                                    <td>{{ $inven->qty_inventaris }}</td>
-                                                    <td>{{ $inven->keterangan_inventaris }}</td>
-                                                    <td>{{ $inven->created_at }}</td>
-                                                </tr>
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+
+                            {{-- <div class="header-nav-item">
+                                <div class="dropdown nav-item-select ">
+                                    <div class="toggle-wrapper btn btn-info" id="nav-profile-dropdown" data-bs-toggle="dropdown">
+                                        <span>Export</span>
+                                        <i class="feather icon-chevron-down"></i>
+                                    </div>
+                                    <div class="dropdown-menu">
+                                        <a href="#" class="dropdown-item">
+                                            <div class="d-flex align-items-center">
+                                                <i class="font-size-lg me-2 feather icon-user"></i>
+                                                <span>Export</span>
+                                             </div>
+                                         </a>
+                                    </div>
                                 </div>
+                            </div> --}}
+
+                            <div class="table-responsive">
+                                <table id="filterTable" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>Nama Barang</th>
+                                            <th>Kategori</th>
+                                            <th>Jumlah</th>
+                                            <th>keterangan</th>
+                                            <th>Tanggal</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($inventaris as $inven)
+                                            <tr>
+                                                <td>{{ $inven->nama_inventaris }}</td>
+                                                <td>{{ $inven->kategori->name }}</td>
+                                                <td>{{ $inven->qty_inventaris }}</td>
+                                                <td>{{ $inven->keterangan_inventaris }}</td>
+                                                <td>{{ $inven->created_at }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
@@ -108,7 +134,7 @@
         "bFilter": true,
         "processing": true,
         "bServerSide": true,
-        "order": [[ 1, "asc" ]],
+        "order": [[ 0, "asc" ]],
         "ajax": {
             url: "{{url('laporan_filter')}}",
             type: "POST",
