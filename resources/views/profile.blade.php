@@ -12,7 +12,7 @@
 
                     <div class="text-center">
                         <div class="avatar avatar-circle avatar-image" style="width: 180px; height: 180px;">
-                            <img src="{{ asset('html/demo/app/assets/images/avatars/VakuMinion.jpeg') }}" alt="">
+                            <img src="{{ asset('html/demo/app/assets/images/avatars/guest-profile.png') }}" alt="">
                         </div>
                         <br><br>
                         <h4>{{ Auth::user()->name }}</h4>

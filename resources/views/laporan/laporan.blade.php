@@ -42,16 +42,7 @@
                                     </form>
 
                                     <div class="container mt-4 ">
-                                        <ul class="nav-menu nav-menu-horizontal">
-                                            <li class="nav-submenu">
-                                                <a href="{{ route('laporan') }}">
-                                                    <div class="nav-submenu-title btn btn-warning">
-                                                        <i class="icon-rotate-cw feather text-white"></i>
-                                                        <span class="text-white">Reset</span>
-                                                    </div>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        <a href="{{ route('laporan') }}" class="btn btn-warning">Reset Filter</a>
                                     </div>
                                 </div>
                             </form>
@@ -155,28 +146,28 @@
                 }
             ],
             dom: "Blfrtip",
-                buttons: [
-                    {
-                        text: 'csv',
-                        extend: 'csvHtml5',
-                    },
-                    {
-                        text: 'excel',
-                        extend: 'excelHtml5',
-                    },
-                    {
-                        text: 'pdf',
-                        extend: 'pdfHtml5',
-                    },
-                    {
-                        text: 'print',
-                        extend: 'print',
-                    },
-                ],
-                columnDefs: [{
-                    orderable: false,
-                    targets: -1
-                }]
+            buttons: [
+                {
+                    text: 'csv',
+                    extend: 'csvHtml5',
+                },
+                {
+                    text: 'excel',
+                    extend: 'excelHtml5',
+                },
+                {
+                    text: 'pdf',
+                    extend: 'pdfHtml5',
+                },
+                {
+                    text: 'print',
+                    extend: 'print',
+                },
+            ],
+            columnDefs: [{
+                orderable: false,
+                targets: -1
+            }]
         });
 
         function filter(){

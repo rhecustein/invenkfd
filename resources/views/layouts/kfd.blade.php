@@ -164,7 +164,7 @@
                             <div class="dropdown header-nav-item-select nav-profile" >
                                 <div class="toggle-wrapper" id="nav-profile-dropdown" data-bs-toggle="dropdown">
                                     <div class="avatar avatar-circle avatar-image" style="width: 35px; height: 35px; line-height: 35px;">
-                                        <img src="{{ asset('html/demo/app/assets/images/avatars/VakuMinion.jpeg') }}" alt="">
+                                        <img src="{{ asset('html/demo/app/assets/images/avatars/guest-profile.png') }}" alt="">
                                     </div>
                                     <span class="fw-bold mx-1">{{ Auth::user()->name }}</span>
                                     <i class="feather icon-chevron-down"></i>
@@ -173,7 +173,7 @@
                                     <div class="nav-profile-header">
                                        <div class="d-flex align-items-center">
                                             <div class="avatar avatar-circle avatar-image">
-                                                <img src="{{ asset('html/demo/app/assets/images/avatars/VakuMinion.jpeg') }}" alt="">
+                                                <img src="{{ asset('html/demo/app/assets/images/avatars/guest-profile.png') }}" alt="">
                                             </div>
                                             <div class="d-flex flex-column ms-1">
                                                 <span class="fw-bold text-dark">{{Auth::user()->name}}</span>
