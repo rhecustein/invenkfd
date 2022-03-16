@@ -25,7 +25,7 @@
                     </div>
                 </a>
             </li>
-                
+
             @endif
 
             <li class="nav-submenu">
@@ -51,7 +51,7 @@
             </li>
 
             @if (auth()->user()->level == 'admin')
-            
+
             <li class="nav-submenu">
                 <div class="nav-submenu-title">
                     <span>
@@ -61,14 +61,16 @@
                     <i class="nav-submenu-arrow caret-bottom"></i>
                 </div>
                 <ul class="nav-menu">
-                    <div class="nav-submenu-title">
-                        <ul class="nav-menu">
-                            <a href="{{ route('kategori') }}">
-                                <i class="feather icon-clipboard"></i>
-                                <span>Kategori</span>
-                            </a>
-                        </ul>
-                    </div>
+                    <a href="{{ route('kategori') }}">
+                        <div class="nav-submenu-title">
+                            <ul class="nav-menu">
+                                <span>
+                                    <i class="feather icon-clipboard"></i>
+                                    <span>Kategori</span>
+                                </span>
+                            </ul>
+                        </div>
+                    </a>
                     <li class="nav-submenu">
                         <div class="nav-submenu-title">
                             <span>
@@ -78,19 +80,26 @@
                             <i class="nav-submenu-arrow caret-right"></i>
                         </div>
                         <ul class="nav-menu">
-                            <li class="nav-menu-item">
-                                <a href="{{ route('trash') }}">
-                                    <i class="feather icon-trash-2"></i>
-                                    <span>Inventory Trash</span>
-                                </a>
-                            </li>
-
-                            <li class="nav-menu-item">
-                                <a href="{{ route('trash.kategori') }}">
-                                    <i class="feather icon-trash"></i>
-                                    <span>Kategori Trash</span>
-                                </a>
-                            </li>
+                            <a href="{{ route('trash') }}">
+                                <div class="nav-submenu-title">
+                                    <ul class="nav-menu">
+                                        <span>
+                                            <i class="feather icon-trash-2"></i>
+                                            <span>Inventory Trash</span>
+                                        </span>
+                                    </ul>
+                                </div>
+                            </a>
+                            <a href="{{ route('trash.kategori') }}">
+                                <div class="nav-submenu-title">
+                                    <ul class="nav-menu">
+                                        <span>
+                                            <i class="feather icon-trash"></i>
+                                            <span>Kategori Trash</span>
+                                        </span>
+                                    </ul>
+                                </div>
+                            </a>
                         </ul>
                     </li>
                 </ul>
