@@ -53,6 +53,17 @@
             @if (auth()->user()->level == 'admin')
 
             <li class="nav-submenu">
+                <a href="{{ route('role.index') }}">
+                    <div class="nav-submenu-title">
+                        <span>
+                            <i class="icon-users feather "></i>
+                            <span>Role Users</span>
+                        </span>
+                    </div>
+                </a>
+            </li>
+
+            <li class="nav-submenu">
                 <div class="nav-submenu-title">
                     <span>
                         <i class="feather icon-menu"></i>
