@@ -20,9 +20,15 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'level',
+        'nama_role',
         'email',
         'password',
     ];
+
+    public function role()
+    {
+        return $this->belongsTo(Role::class, 'id_role', 'id');
+    }
 
     /**
      * The attributes that should be hidden for serialization.

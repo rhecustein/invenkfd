@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InventarisController;
 use App\Http\Controllers\MutasiController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
@@ -34,6 +35,7 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::resource('inven', 'InventarisController');
     Route::resource('kategori', 'KategoriController');
     Route::resource('user', 'UserController');
+    Route::resource('role', 'RoleController');
 
     Route::get('restore/{id}', [InventarisController::class, 'restore']);
 
@@ -45,19 +47,23 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
 
     Route::post('kategori.store', [KategoriController::class, 'store']);
 
-    Route::post('laporan_filter', [LaporanController::class, 'laporanFilter']);
-
     Route::post('store-data', [InventarisController::class, 'store']);
+
+    // Route::post('laporan_filter', [LaporanController::class, 'laporanFilter']);
 
     Route::get('kategori.edit/{id}', [KategoriController::class, 'edit']);
 
-    Route::put('update-kategori/{id}', [KategoriController::class, 'update']);
-
-    Route::get('kategori.delete/{id}', [KategoriController::class, 'destroy']);
-
     Route::get('edit/{id}', [InventarisController::class, 'edit']);
 
+    Route::get('role.edit/{id}', [RoleController::class, 'edit']);
+
+    Route::put('update-kategori/{id}', [KategoriController::class, 'update']);
+
     Route::put('update-data/{id}', [InventarisController::class, 'update']);
+
+    Route::put('update-role/{id}', [RoleController::class, 'update']);
+
+    Route::get('kategori.delete/{id}', [KategoriController::class, 'destroy']);
 
     Route::get('delete/{id}', [InventarisController::class, 'destroy']);
 });
@@ -69,6 +75,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,user']], function (){
     Route::get('/laporan', [LaporanController::class, 'index'])->name('laporan');
 
     Route::get('filter/tanggal', [LaporanController::class, 'laporanFilter'])->name('filter/tanggal');
+
+    Route::post('laporan_filter', [LaporanController::class, 'laporanFilter']);
 
 });
 

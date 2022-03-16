@@ -19,6 +19,6 @@ class CekLevel
         if (in_array($request->user()->level,$levels)){
             return $next($request);
         }
-        return back()->with('error', 'Maaf, Anda tidak memiliki akses ke page tersebut');
+        return back()->with('message', 'Maaf, Anda tidak memiliki akses ke page tersebut');
     }
 }

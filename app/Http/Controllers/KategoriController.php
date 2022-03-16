@@ -36,7 +36,7 @@ class KategoriController extends Controller
             'slug' => Str::slug($request->name)
         ]);
 
-    return redirect('inven/kategori')->with('success', 'Berhasil Membuat Kategori');
+    return redirect('kategori')->with('success', 'Berhasil Membuat Kategori');
     }
 
 
