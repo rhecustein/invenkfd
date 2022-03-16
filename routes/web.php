@@ -66,6 +66,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
     Route::get('kategori.delete/{id}', [KategoriController::class, 'destroy']);
 
     Route::get('delete/{id}', [InventarisController::class, 'destroy']);
+
+    Route::post('/crop',[ProfileController::class, 'crop'])->name('user.crop');
 });
 
 Route::group(['middleware' => ['auth', 'ceklevel:admin,user']], function (){

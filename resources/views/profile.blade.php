@@ -25,7 +25,7 @@
                             <div class="row">
                                 <div class="col" style="max-width: 200px;">
                                     <div class="mb-3">
-                                        <img class="img-fluid w-100 rounded" src="{{ asset('html/demo/app/assets/images/avatars/guest-profile.png') }}" alt="upload avatar">
+                                        <img class="img-fluid w-100 rounded" src="user_image/{{ $UserInfo['picture'] == '' ? 'guest-profile.png' : $UserInfo['picture'] }}" alt="upload avatar">
                                     </div>
                                     <div class="upload upload-text w-100">
                                         <div>
@@ -83,6 +83,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="{{ asset('ijaboCropTool/ijaboCropTool.min.js') }}"></script>
     <script>
-        $('#upload').ijaboCropTool({});
+        $('#upload').ijaboCropTool({
+            processUrl:'{{ route("user.crop") }}',
+            withCSRF:['_token','{{ csrf_token() }}'],
+            onSuccess:function(message, element, status){
+                alert(message);
+            },
+            onError:function(message, element, status){
+                alert(message);
+            }
+        });
     </script>
 @endpush
