@@ -49,6 +49,12 @@
                                               <th class="py-4">Phone</th>
                                               <td class="py-4">+ 12025550193</td>
                                            </tr>
+
+                                           <tr>
+                                            <th class="py-4">Level akun</th>
+                                            <td class="py-4">{{ Auth::user()->level }}</td>
+                                           </tr>
+
                                            <tr>
                                               <th class="py-4">Gender</th>
                                               <td class="py-4">Female</td>
