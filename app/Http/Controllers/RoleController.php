@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Role;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class RoleController extends Controller
 {
@@ -14,8 +16,9 @@ class RoleController extends Controller
      */
     public function index()
     {
+        $userInfo=User::where('id','=',Auth::user()->id)->first();
         $roles = Role::paginate(15);
-        return view('roles.role', compact('roles'));
+        return view('roles.role',['userInfo'=>$userInfo], compact('roles'));
     }
 
     /**
@@ -25,7 +28,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('roles.create');
+        $userInfo=User::where('id','=',Auth::user()->id)->first();
+        return view('roles.create',['userInfo'=>$userInfo]);
     }
 
     /**
@@ -43,7 +47,7 @@ class RoleController extends Controller
         $roles = Role::create([
             'role' => $request->role
         ]);
-        
+
         return redirect('role')->with('success', 'Berhasil membuat Role baru');
     }
 
@@ -66,8 +70,9 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
+        $userInfo=User::where('id','=',Auth::user()->id)->first();
         $roles = Role::findorfail($id);
-        return view('roles.edit', compact('roles'));
+        return view('roles.edit',['userInfo'=>$userInfo], compact('roles'));
     }
 
     /**

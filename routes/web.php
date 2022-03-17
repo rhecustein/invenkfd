@@ -9,6 +9,8 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SupportController;
+use App\Models\User;
+Use Illuminate\Support\Facades\Auth;
 
 Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
 
@@ -89,7 +91,10 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $userInfo=User::where('id','=',Auth::user()->id)->first();
+    return view('dashboard', [
+        'userInfo'=>$userInfo
+    ]);
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/kfd', function () {

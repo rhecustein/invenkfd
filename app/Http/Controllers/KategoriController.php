@@ -5,22 +5,23 @@ namespace App\Http\Controllers;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class KategoriController extends Controller
 {
-
-
     public function index()
     {
+        $userInfo = User::where('id', '=', Auth::user()->id)->first();
         $kategori = Kategori::paginate(10000);
-        return view('kategori.kategori', compact('kategori'));
+        return view('kategori.kategori',['userInfo'=>$userInfo], compact('kategori'));
     }
 
 
     public function create()
-    { 
-        return view('kategori.create');
+    {
+        $userInfo = User::where('id', '=', Auth::user()->id)->first();
+        return view('kategori.create', ['userInfo'=>$userInfo]);
     }
 
 
@@ -53,8 +54,9 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
+        $userInfo = User::where('id', '=', Auth::user()->id)->first();
         $kategori = Kategori::findorfail($id);
-        return view('kategori.edit', compact('kategori'));
+        return view('kategori.edit',['userInfo'=>$userInfo], compact('kategori'));
     }
 
     public function update(Request $request, $id)
@@ -84,14 +86,15 @@ class KategoriController extends Controller
     {
         $kategori = Kategori::findorfail($id);
         $kategori->delete();
-        
+
         return redirect('inven/kategori')->with('success', 'Kategori berhasil dihapus');
     }
 
     public function trash_list()
     {
+        $userInfo = User::where('id', '=', Auth::user()->id)->first();
         $kategori = Kategori::onlyTrashed()->paginate(1000);
-        return view('trash.kategori_trash', compact('kategori'));
+        return view('trash.kategori_trash',['userInfo'=>$userInfo], compact('kategori'));
     }
 
     public function restore($id = null)

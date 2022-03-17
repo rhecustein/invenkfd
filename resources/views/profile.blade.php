@@ -25,11 +25,11 @@
                             <div class="row">
                                 <div class="col" style="max-width: 200px;">
                                     <div class="mb-3">
-                                        <img class="img-fluid w-100 rounded" src="user_image/{{ $UserInfo['picture'] == '' ? 'guest-profile.png' : $UserInfo['picture'] }}" alt="upload avatar">
+                                        <img class="img-fluid w-100 rounded user_picture" src="user_image/{{ $userInfo['picture'] == '' ? 'guest-profile.png' : $userInfo['picture'] }}" alt="upload avatar">
                                     </div>
                                     <div class="upload upload-text w-100">
                                         <div>
-                                            <label for="upload" class="btn btn-secondary w-100">Upload</label>
+                                            <label for="upload" class="btn btn-secondary w-100">Change Profile</label>
                                         </div>
                                         <input id="upload" type="file" name="upload" class="upload-input" accept="image/png, image/jpeg">
                                     </div>
@@ -84,8 +84,10 @@
     <script src="{{ asset('ijaboCropTool/ijaboCropTool.min.js') }}"></script>
     <script>
         $('#upload').ijaboCropTool({
+            preview: '.user_picture',
             processUrl:'{{ route("user.crop") }}',
             withCSRF:['_token','{{ csrf_token() }}'],
+            buttonsText:['CROP & SAVE', 'CANCEL'],
             onSuccess:function(message, element, status){
                 alert(message);
             },

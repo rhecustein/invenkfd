@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Exports\LaporanExport;
 use App\Models\Inventaris;
 use App\Models\Kategori;
-use App\Models\Laporan;
-use Illuminate\Support\Facades\DB;
-use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\Console\Input\Input;
+use App\Models\User;
 
 class LaporanController extends Controller
 {
@@ -18,7 +14,9 @@ class LaporanController extends Controller
     {
         $inventaris = Inventaris::get();
         $kategori = Kategori::get();
-        return view('laporan.laporan', compact('inventaris','kategori'));
+        $userInfo = User::where('id', '=', Auth::user()->id)->first();
+
+        return view('laporan.laporan',['userInfo'=>$userInfo], compact('inventaris','kategori'));
     }
 
     public function laporanFilter(Request $request)

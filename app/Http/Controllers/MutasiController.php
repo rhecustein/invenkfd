@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventaris;
 use App\Models\Mutasi;
+use App\Models\Profile;
 use Illuminate\Http\Request;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class MutasiController extends Controller
 {
@@ -15,8 +18,10 @@ class MutasiController extends Controller
      */
     public function index()
     {
+        $userInfo = User::where('id', '=', Auth::user()->id)->first();
         $inventaris = Inventaris::get();
-        return view('mutasi', compact('inventaris'));
+
+        return view('mutasi',['userInfo'=>$userInfo], compact('inventaris'));
     }
 
     /**
