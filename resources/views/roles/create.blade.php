@@ -22,7 +22,7 @@
     @csrf
     <div class="mb-3">
         <label for="">Roles</label>
-        <input type="text" class="form-control" name="role">
+        <input type="text" class="form-control" name="role" id="formGroupExampleInput">
     </div>
 
     <div class="mb-3">

@@ -23,7 +23,7 @@
                             <div class="card-body">
                                 <h2>Roles</h2>
                                 <hr>
-                                <a href="{{ url('role.create') }}" class="btn btn-info">Tambah Roles</a>
+                                <a href="{{ route('role.create') }}" class="btn btn-info">Tambah Roles</a>
                                 <div class="mt-4">
                                     <div class="table-responsive">
                                         <table id="data-table" class="table table-hover">
@@ -42,7 +42,7 @@
                                                     <td>
                                                         <div class="d-grid gap-2 d-md-block">
                                                             <a href="{{ url('role.edit/'.$hasil->id) }}" class="btn btn-success">Edit</a>
-                                                            <a href="{{ url('role.destroy'.$hasil->id) }}" class="btn btn-danger">Delete</a>
+                                                            <a href="{{ url('destroy-role/'.$hasil->id) }}" class="btn btn-danger">Delete</a>
                                                         </div>
                                                     </td>
                                                 </tr>

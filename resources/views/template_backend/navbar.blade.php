@@ -13,7 +13,7 @@
                 </a>
             </li>
 
-            @if (auth()->user()->level == 'admin')
+            @if (auth()->user()->id_role == '1' || auth()->user()->level == 'admin')
 
             <li class="nav-submenu">
                 <a href="{{ route('inventaris') }}">
@@ -50,7 +50,7 @@
                 </a>
             </li>
 
-            @if (auth()->user()->level == 'admin')
+            @if (auth()->user()->id_role == '1' || auth()->user()->level == 'admin')
 
             <li class="nav-submenu">
                 <a href="{{ route('role.index') }}">

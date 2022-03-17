@@ -45,6 +45,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
 
     Route::get('delete-permanent/kategori/{id}', [KategoriController::class, 'delete_permanent']);
 
+    Route::get('destroy-role/{id}', [RoleController::class, 'destroy']);
+
     Route::post('kategori.store', [KategoriController::class, 'store']);
 
     Route::post('store-data', [InventarisController::class, 'store']);

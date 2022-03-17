@@ -98,8 +98,11 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        //
+        $roles = Role::findorfail($id);
+        $roles->delete();
+
+        return redirect('role')->with('success', 'Role Berhasil Dihapus Permanent');
     }
 }
