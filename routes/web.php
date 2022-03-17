@@ -24,8 +24,6 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
 
     // Route::get('filter/tanggal', [LaporanController::class, 'laporanFilter'])->name('filter/tanggal');
 
-    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-
     Route::get('/setting', [SettingController::class, 'index'])->name('setting');
 
     Route::get('/support', [SupportController::class, 'index'])->name('support');
@@ -83,6 +81,8 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,user']], function (){
     Route::get('filter/tanggal', [LaporanController::class, 'laporanFilter'])->name('filter/tanggal');
 
     Route::post('laporan_filter', [LaporanController::class, 'laporanFilter']);
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 
 });
 
