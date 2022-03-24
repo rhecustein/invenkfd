@@ -25,7 +25,11 @@
                             <div class="row">
                                 <div class="col" style="max-width: 200px;">
                                     <div class="mb-3">
-                                        <img class="img-fluid w-100 rounded user_picture" src="user_image/{{ $userInfo['picture'] == '' ? 'guest-profile.png' : $userInfo['picture'] }}" alt="upload avatar">
+                                        @if (file_exists('user_image/'.Auth()->user()->picture))
+                                            <img class="img-fluid w-100 rounded user_picture" src="{{ asset('user_image/' . Auth()->user()->picture) }}" alt="">
+                                        @else
+                                            <img class="img-fluid w-100 rounded user_picture" src="{{ asset('user_image/guest-profile.png') }}" alt="">
+                                        @endif
                                     </div>
                                     <div class="upload upload-text w-100">
                                         <div>
@@ -57,7 +61,7 @@
 
                                            <tr>
                                               <th class="py-4">Gender</th>
-                                              <td class="py-4">Female</td>
+                                              <td class="py-4">Male</td>
                                            </tr>
                                            <tr>
                                               <th class="py-4">Birthday</th>

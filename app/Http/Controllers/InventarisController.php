@@ -16,16 +16,18 @@ class InventarisController extends Controller
     {
         $inventaris = Inventaris::paginate(100000000000);
         $kategori = Kategori::get();
-        $userInfo=User::where('id','=',Auth::user()->id)->first();
+        return view('inven.inventaris',compact('inventaris','kategori'));
 
-        return view('inven.inventaris', ['userInfo'=>$userInfo],compact('inventaris','kategori'));
+        // $inventaris = Inventaris::select('*')->with('kategori')->paginate(10);
+        // return view('inven.inventaris', [
+        //     'inventaris'=>$inventaris
+        // ]);
     }
 
     public function create()
     {
-        $userInfo = User::where('id', '=', Auth::user()->id)->first();
         $kategori = Kategori::all();
-        return view('inven.create',['userInfo'=>$userInfo], compact('kategori'));
+        return view('inven.create', compact('kategori'));
     }
 
     public function store(Request $request)
@@ -56,10 +58,9 @@ class InventarisController extends Controller
 
     public function edit($id)
     {
-        $userInfo=User::where('id','=',Auth::user()->id)->first();
         $kategori = Kategori::all();
         $inventaris = Inventaris::findorfail($id);
-        return view('inven.edit',['userInfo'=>$userInfo], compact('inventaris', 'kategori'));
+        return view('inven.edit', compact('inventaris', 'kategori'));
     }
 
     public function update(Request $request,$id)
@@ -100,9 +101,8 @@ class InventarisController extends Controller
 
     public function trash_list()
     {
-        $userInfo=User::where('id','=',Auth::user()->id)->first();
         $inventaris = Inventaris::onlyTrashed()->paginate(1000);
-        return view('trash.trash',['userInfo'=>$userInfo], compact('inventaris'));
+        return view('trash.trash', compact('inventaris'));
     }
 
     public function restore($id = null)

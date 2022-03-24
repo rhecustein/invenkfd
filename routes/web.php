@@ -91,10 +91,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    $userInfo=User::where('id','=',Auth::user()->id)->first();
-    return view('dashboard', [
-        'userInfo'=>$userInfo
-    ]);
+    return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 Route::get('/kfd', function () {

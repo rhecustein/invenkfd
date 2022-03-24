@@ -18,10 +18,9 @@ class MutasiController extends Controller
      */
     public function index()
     {
-        $userInfo = User::where('id', '=', Auth::user()->id)->first();
         $inventaris = Inventaris::get();
 
-        return view('mutasi',['userInfo'=>$userInfo], compact('inventaris'));
+        return view('mutasi', compact('inventaris'));
     }
 
     /**

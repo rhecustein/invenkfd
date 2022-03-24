@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -164,7 +165,11 @@
                             <div class="dropdown header-nav-item-select nav-profile" >
                                 <div class="toggle-wrapper" id="nav-profile-dropdown" data-bs-toggle="dropdown">
                                     <div class="avatar avatar-circle avatar-image" style="width: 35px; height: 35px; line-height: 35px;">
-                                        <img class="user_picture" src="user_image/{{ $userInfo['picture'] == '' ? 'guest-profile.png' : $userInfo['picture'] }}" alt="">
+                                        @if (file_exists('user_image/'. Auth()->user()->picture))
+                                            <img class="user_picture" src="{{ asset('user_image/' . Auth()->user()->picture) }}" alt="">
+                                        @else
+                                            <img class="user_picture" src="{{ asset('user_image/guest-profile.png') }}" alt="">
+                                        @endif
                                     </div>
                                     <span class="fw-bold mx-1">{{ Auth::user()->name }}</span>
                                     <i class="feather icon-chevron-down"></i>
@@ -173,7 +178,11 @@
                                     <div class="nav-profile-header">
                                        <div class="d-flex align-items-center">
                                             <div class="avatar avatar-circle avatar-image">
-                                                <img class="user_picture" src="user_image/{{ $userInfo['picture'] == '' ? 'guest-profile.png' : $userInfo['picture'] }}" alt="">
+                                                @if (file_exists('user_image/'.Auth()->user()->picture))
+                                                    <img class="user_picture" src="{{ asset('user_image/' . Auth()->user()->picture) }}" alt="">
+                                                @else
+                                                    <img class="user_picture" src="{{ asset('user_image/guest-profile.png') }}" alt="">
+                                                @endif
                                             </div>
                                             <div class="d-flex flex-column ms-1">
                                                 <span class="fw-bold text-dark">{{Auth::user()->name}}</span>

@@ -12,16 +12,14 @@ class KategoriController extends Controller
 {
     public function index()
     {
-        $userInfo = User::where('id', '=', Auth::user()->id)->first();
         $kategori = Kategori::paginate(10000);
-        return view('kategori.kategori',['userInfo'=>$userInfo], compact('kategori'));
+        return view('kategori.kategori', compact('kategori'));
     }
 
 
     public function create()
     {
-        $userInfo = User::where('id', '=', Auth::user()->id)->first();
-        return view('kategori.create', ['userInfo'=>$userInfo]);
+        return view('kategori.create');
     }
 
 
@@ -37,7 +35,7 @@ class KategoriController extends Controller
             'slug' => Str::slug($request->name)
         ]);
 
-    return redirect('kategori')->with('success', 'Berhasil Membuat Kategori');
+        return redirect('kategori')->with('success', 'Berhasil Membuat Kategori');
     }
 
 
@@ -54,9 +52,8 @@ class KategoriController extends Controller
      */
     public function edit($id)
     {
-        $userInfo = User::where('id', '=', Auth::user()->id)->first();
         $kategori = Kategori::findorfail($id);
-        return view('kategori.edit',['userInfo'=>$userInfo], compact('kategori'));
+        return view('kategori.edit', compact('kategori'));
     }
 
     public function update(Request $request, $id)
@@ -92,9 +89,8 @@ class KategoriController extends Controller
 
     public function trash_list()
     {
-        $userInfo = User::where('id', '=', Auth::user()->id)->first();
         $kategori = Kategori::onlyTrashed()->paginate(1000);
-        return view('trash.kategori_trash',['userInfo'=>$userInfo], compact('kategori'));
+        return view('trash.kategori_trash', compact('kategori'));
     }
 
     public function restore($id = null)

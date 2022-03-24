@@ -10,12 +10,7 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $userInfo=User::where('id','=',Auth::user()->id)->first();
-
-        return view('profile',
-		[
-		  'userInfo'=>$userInfo
-		]);
+        return view('profile');
     }
 
     public function crop(Request $request)
@@ -28,8 +23,7 @@ class ProfileController extends Controller
         if(!$move){
             return response()->json(['status'=>0, 'msg'=>'Something went wrong']);
         }else{
-            $userInfo=User::where('id','=',Auth::user()->id)->first();
-            $userPhoto = $userInfo->picture;
+            $userPhoto = Auth()->user()->picture;
             if($userPhoto !=''){
                 unlink($dest.$userPhoto);
             }

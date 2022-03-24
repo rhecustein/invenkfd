@@ -16,9 +16,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        $userInfo=User::where('id','=',Auth::user()->id)->first();
         $roles = Role::paginate(15);
-        return view('roles.role',['userInfo'=>$userInfo], compact('roles'));
+        return view('roles.role', compact('roles'));
     }
 
     /**
@@ -28,8 +27,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        $userInfo=User::where('id','=',Auth::user()->id)->first();
-        return view('roles.create',['userInfo'=>$userInfo]);
+        return view('roles.create');
     }
 
     /**
@@ -70,9 +68,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $userInfo=User::where('id','=',Auth::user()->id)->first();
         $roles = Role::findorfail($id);
-        return view('roles.edit',['userInfo'=>$userInfo], compact('roles'));
+        return view('roles.edit', compact('roles'));
     }
 
     /**

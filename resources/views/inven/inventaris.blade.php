@@ -1,5 +1,6 @@
 @extends('layouts.kfd')
 
+
 @section('css')
     <link rel="stylesheet" href="//cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
 @endsection

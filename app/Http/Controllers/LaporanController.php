@@ -14,9 +14,8 @@ class LaporanController extends Controller
     {
         $inventaris = Inventaris::get();
         $kategori = Kategori::get();
-        $userInfo = User::where('id', '=', Auth::user()->id)->first();
 
-        return view('laporan.laporan',['userInfo'=>$userInfo], compact('inventaris','kategori'));
+        return view('laporan.laporan', compact('inventaris','kategori'));
     }
 
     public function laporanFilter(Request $request)
