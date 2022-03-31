@@ -14,7 +14,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h4>25</h4>
+                            <h4>{{ $items }}</h4>
                             Items
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                     </div>
                     <div class="col-md-8">
                         <div class="card-body">
-                            <h4>30</h4>
+                            <h4>{{$users}}</h4>
                             Users
                         </div>
                     </div>

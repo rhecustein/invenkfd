@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class InventarisController extends Controller
 {

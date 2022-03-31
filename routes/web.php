@@ -9,6 +9,7 @@ use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SupportController;
+use App\Http\Controllers\DashboardController;
 use App\Models\User;
 Use Illuminate\Support\Facades\Auth;
 
@@ -90,9 +91,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {return view('dashboard'); })->middleware(['auth'])->name('dashboard');
+
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::get('/kfd', function () {
     return view('kfd');
