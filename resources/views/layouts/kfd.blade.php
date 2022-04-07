@@ -14,11 +14,15 @@
 
     <!-- Core css -->
     <link href="{{ asset('html/demo/app/assets/css/app.min.css') }}" rel="stylesheet">
+    
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
 
     <!-- Datetime Picker CSS -->
     {{-- <link rel="stylesheet" href="html/demo/app/assets/css/datepicker.css"> --}}
     @yield('css')
+
+    {{-- @yield('modal-css') --}}
+
 </head>
 
 <body>
@@ -398,8 +402,10 @@
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
-
     @stack('scripts')
+
+    @stack('modal-scripts')
+
 </body>
 
 </html>

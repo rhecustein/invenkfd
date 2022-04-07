@@ -39,7 +39,7 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'role' => 'required|min:3'
+            'role' => 'required'
         ]);
 
         $roles = Role::create([

@@ -91,6 +91,7 @@
                             <i class="nav-submenu-arrow caret-right"></i>
                         </div>
                         <ul class="nav-menu">
+
                             <a href="{{ route('trash') }}">
                                 <div class="nav-submenu-title">
                                     <ul class="nav-menu">
@@ -101,18 +102,41 @@
                                     </ul>
                                 </div>
                             </a>
+
                             <a href="{{ route('trash.kategori') }}">
                                 <div class="nav-submenu-title">
                                     <ul class="nav-menu">
                                         <span>
-                                            <i class="feather icon-trash"></i>
+                                            <i class="feather icon-trash-2"></i>
                                             <span>Kategori Trash</span>
                                         </span>
                                     </ul>
                                 </div>
                             </a>
+
+                            <a href="{{ route('trash.lokasi') }}">
+                                <div class="nav-submenu-title">
+                                    <ul class="nav-menu">
+                                        <span>
+                                            <i class="feather icon-trash-2"></i>
+                                            <span>Lokasi Trash</span>
+                                        </span>
+                                    </ul>
+                                </div>
+                            </a>
+
                         </ul>
                     </li>
+                    <a href="{{ route('lokasi.index') }}">
+                        <div class="nav-submenu-title">
+                            <ul class="nav-menu">
+                                <span>
+                                    <i class="feather icon-map-pin"></i>
+                                    <span>Lokasi</span>
+                                </span>
+                            </ul>
+                        </div>
+                    </a>
                 </ul>
             </li>
             @endif

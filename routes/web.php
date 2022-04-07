@@ -10,6 +10,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\LokasiController;
 use App\Models\User;
 Use Illuminate\Support\Facades\Auth;
 
@@ -33,18 +34,25 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
 
     Route::get('/trash/kategori', [KategoriController::class, 'trash_list'])->name('trash.kategori');
 
+    Route::get('trash/lokasi', [LokasiController::class, 'trash_list'])->name('trash.lokasi');
+
     Route::resource('inven', 'InventarisController');
     Route::resource('kategori', 'KategoriController');
     Route::resource('user', 'UserController');
     Route::resource('role', 'RoleController');
+    Route::resource('lokasi', 'LokasiController');
 
     Route::get('restore/{id}', [InventarisController::class, 'restore']);
 
     Route::get('restore/kategori/{id}', [KategoriController::class, 'restore']);
 
+    Route::get('restore/lokasi/{id}', [LokasiController::class, 'restore']);
+
     Route::get('delete-permanent/{id}', [InventarisController::class, 'delete_permanent']);
 
     Route::get('delete-permanent/kategori/{id}', [KategoriController::class, 'delete_permanent']);
+
+    Route::get('delete-permanent/lokasi/{id}', [LokasiController::class, 'delete_permanent']);
 
     Route::get('destroy-role/{id}', [RoleController::class, 'destroy']);
 
@@ -60,15 +68,21 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin']], function () {
 
     Route::get('role.edit/{id}', [RoleController::class, 'edit']);
 
+    Route::get('lokasi.edit/{id}', [LokasiController::class, 'edit']);
+
     Route::put('update-kategori/{id}', [KategoriController::class, 'update']);
 
     Route::put('update-data/{id}', [InventarisController::class, 'update']);
 
     Route::put('update-role/{id}', [RoleController::class, 'update']);
 
+    Route::put('update-lokasi/{id}', [LokasiController::class, 'update']);
+
     Route::get('kategori.delete/{id}', [KategoriController::class, 'destroy']);
 
     Route::get('delete/{id}', [InventarisController::class, 'destroy']);
+
+    Route::get('lokasi.destroy/{id}', [LokasiController::class, 'destroy']);
 
     Route::post('/crop',[ProfileController::class, 'crop'])->name('user.crop');
 });
