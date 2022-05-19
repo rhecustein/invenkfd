@@ -38,7 +38,7 @@
                             </div>
 
                             <div class="mb-3">
-                                <button class="btn btn-primary btn-block">Simpan Barang</button>
+                                <button class="btn btn-primary btn-block">Simpan Lokasi</button>
                             </div>
                         </div>
                     </div>

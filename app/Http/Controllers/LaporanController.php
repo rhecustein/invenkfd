@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Inventaris;
 use App\Models\Kategori;
+use App\Models\Lokasi;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -12,16 +13,18 @@ class LaporanController extends Controller
 {
     public function index(Request $request)
     {
-        $inventaris = Inventaris::get();
+        $inventaris = Inventaris::paginate(1000);
         $kategori = Kategori::get();
+        $lokasi = Lokasi::get(); 
 
-        return view('laporan.laporan', compact('inventaris','kategori'));
+        return view('laporan.laporan', compact('inventaris','kategori','lokasi'));
     }
 
     public function laporanFilter(Request $request)
     {
 
         $kateg = $request->kateg;
+        $lokasi = $request->lokasi;
         $start_date = $request->fromdate;
         $end_date = $request->todate;
         $search_data = $request->input("search.value");
@@ -31,13 +34,14 @@ class LaporanController extends Controller
             'id',
             'nama_inventaris',
             'id_kategori',
+            'id_lokasi',
             'qty_inventaris',
             'keterangan_inventaris',
             'created_at'
         ];
 
         $orderBy = $columns[$order_by];
-        $data = Inventaris::select('*')->with('kategori');
+        $data = Inventaris::select('*')->with('kategori', 'lokasi');
 
         if($search_data){
             $data = $data->where(function($query){
@@ -49,6 +53,10 @@ class LaporanController extends Controller
 
         if($kateg){
             $data = $data->whereRaw('LOWER(id_kategori) = ?',$kateg);
+        }
+
+        if($lokasi){
+            $data = $data->whereRaw('LOWER(id_lokasi) = ?',$lokasi);
         }
 
         if($start_date != "" && $end_date != ""){

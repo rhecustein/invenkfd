@@ -18,6 +18,7 @@ class CreateInventarisTable extends Migration
             $table->string('nama_inventaris')->nullable();
             $table->bigInteger('qty_inventaris')->nullable();
             $table->string('id_kategori')->nullable();
+            $table->string('id_lokasi')->nullable();
             $table->string('keterangan_inventaris')->nullable();
             $table->timestamps();
         });

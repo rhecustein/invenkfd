@@ -15,10 +15,12 @@ class CreateLaporansTable extends Migration
     {
         Schema::create('laporans', function (Blueprint $table) {
             $table->bigIncrements('id');
+            // $table->string('kode_equipment')->nullable();
             $table->string('nama_inventaris')->nullable();
             $table->bigInteger('qty_inventaris')->nullable();
+            $table->string('id_lokasi')->nullable();
             $table->string('id_kategori')->nullable();
-            $table->string('keterangan_inventaris')->nullable();
+            $table->char('keterangan_inventaris')->nullable();
             $table->timestamps();
         });
     }

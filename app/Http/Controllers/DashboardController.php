@@ -11,6 +11,7 @@ class DashboardController extends Controller
     {   
         $items = DB::table('inventaris')->count();
         $users = DB::table('users')->count();
-        return view('dashboard', compact('items', 'users'));
+        $roles = DB::table('roles')->count();
+        return view('dashboard', compact('items', 'users', 'roles'));
     }
 }

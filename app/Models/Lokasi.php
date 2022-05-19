@@ -15,4 +15,14 @@ class Lokasi extends Model
         'kode_lokasi',
         'nama_lokasi',
     ];
+
+    public function lokasi()
+    {
+        return $this->hasMany(Inventaris::class, 'id','id_lokasi');
+    }
+
+    public function lokasi_laporan()
+    {
+        return $this->hasMany(Laporan::class, 'id', 'id_lokasi');
+    }
 }

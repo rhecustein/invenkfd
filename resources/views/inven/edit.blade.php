@@ -22,7 +22,7 @@
                             <h2>Inventory <span class="badge bg-primary">Edit</span></h2>
                             <hr>
                             <div class="mb-3">
-                                <label>Nama Barang</label>
+                                <label>Nama Inventori</label>
                                 <input type="text" class="form-control" value="{{ $inventaris->nama_inventaris }}" name="nama_inventaris" id="formGroupExampleInput">
                             </div>
 
@@ -38,13 +38,25 @@
                                     </select>
                                 </div>
 
+                                <div class="mb-3">
+                                    <label>Lokasi</label>
+                                    <select class="form-control" name="id_lokasi">
+                                        @foreach ($lokasi as $result)
+                                    <option value="{{ $result->id }}" @if ($result->id == $inventaris->id_lokasi)
+                                        selected
+                                        @endif
+                                        >{{ $result->nama_lokasi }}</option>
+                                    @endforeach
+                                    </select>
+                                </div>
+
                             <div class="mb-3">
                                 <label for="">Jumlah</label>
                                 <input type="text" class="form-control" value="{{ $inventaris->qty_inventaris }}" name="qty_inventaris" id="formGroupExampleInput">
                             </div>
 
                             <div class="mb-3">
-                                <label>Keterangan Barang</label>
+                                <label>Keterangan Inventori</label>
                                 <input type="text" class="form-control" value="{{ $inventaris->keterangan_inventaris }}" name="keterangan_inventaris" id="formGroupExampleInput">
                             </div>
                             <a href="{{ route('inventaris') }}"><button type="submit" class="btn btn-success btn-block">Update</button></a>

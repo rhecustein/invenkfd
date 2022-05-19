@@ -34,7 +34,7 @@
                     <div class="header-nav-left">
                         <div class="nav-logo">
                             <div class="w-100 logo">
-                                <img class="img-fluid" src="{{ asset('html/demo/app/assets/images/logo/logo.png') }}" style="max-height: 70px;" alt="logo">
+                                <img class="img-fluid" src="{{ asset('html/demo/app/assets/images/logo/LabKlinik.png') }}" style="max-height: 70px;" alt="logo">
                             </div>
                         </div>
                         <div class="header-nav-item mobile-toggle">
@@ -138,33 +138,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="header-nav-item">
-                            <div class="dropdown header-nav-item-select">
-                                <div class="toggle-wrapper" id="nav-lang-dropdown" data-bs-toggle="dropdown">
-                                    <div class="avatar avatar-circle avatar-image" style="width: 22px; height: 22px; line-height: 22px;">
-                                        <img src="{{ asset('html/demo/app/assets/images/thumbs/en_US.png') }}" alt="">
-                                    </div>
-                                </div>
-                                <div class="dropdown-menu dropdown-menu-end">
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                        <div class="d-flex align-items-center">
-                                            <div class="avatar avatar-circle avatar-image" style="width: 18px; height: 18px; line-height: 18px;">
-                                                <img src="{{ asset('html/demo/app/assets/images/thumbs/en_US.png') }}" alt="">
-                                            </div>
-                                            <span class="ms-2">English</span>
-                                        </div>
-                                    </a>
-                                    <a href="javascript:void(0)" class="dropdown-item">
-                                        <div class="d-flex align-items-center">
-                                            <div class="avatar avatar-circle avatar-image" style="width: 18px; height: 18px; line-height: 18px;">
-                                                <img src="{{ asset('html/demo/app/assets/images/thumbs/fr_FR.png') }}" alt="">
-                                            </div>
-                                            <span class="ms-2">French</span>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        
                         <div class="header-nav-item">
                             <div class="dropdown header-nav-item-select nav-profile" >
                                 <div class="toggle-wrapper" id="nav-profile-dropdown" data-bs-toggle="dropdown">
@@ -265,17 +239,17 @@
                             <span class="nav-menu-item-title">Laporan</span>
                         </a>
                     </li>
-                    <li class="nav-group-title">Inventory</li>
+                    <li class="nav-group-title">Inventaris</li>
                     <li class="nav-menu-item">
                         <a href="{{ route('inventaris') }}">
                             <i class="feather icon-package"></i>
-                            <span class="nav-menu-item-title">Inventory</span>
+                            <span class="nav-menu-item-title">Inventaris</span>
                         </a>
                     </li>
                     <li class="nav-menu-item">
                         <a href="{{ route('trash') }}">
                             <i class="feather icon-trash-2"></i>
-                            <span class="nav-menu-item-title">Inventory Trash</span>
+                            <span class="nav-menu-item-title">Inventaris Trash</span>
                         </a>
                     </li>
                     <li class="nav-group-title">Kategori</li>

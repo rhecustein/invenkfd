@@ -24,7 +24,7 @@
                 <div class="main">
                     <div class="card">
                         <div class="card-body">
-                            <h2>Inventory</h2>
+                            <h2>Inventaris</h2>
                             <hr>
                             <a href="#" data-toggle="modal" data-target="#ModalCreateInven"><button class="btn btn-primary me-2">Tambah</button></a>
                             <div class="mt-4">
@@ -33,9 +33,10 @@
                                         <thead>
                                             <tr>
                                                 <th scope="col">No</th>
-                                                <th scope="col">Nama Barang</th>
+                                                <th scope="col">Nama Inventaris</th>
                                                 <th scope="col">Kategori</th>
                                                 <th scope="col">Jumlah</th>
+                                                <th scope="col">Lokasi</th>
                                                 <th scope="col">Keterangan</th>
                                                 <th scope="col">Action</th>
                                             </tr>
@@ -47,6 +48,7 @@
                                                     <td>{{ $hasil->nama_inventaris }}</td>
                                                     <td>{{ $hasil->kategori->name }}</td>
                                                     <td>{{ $hasil->qty_inventaris }}</td>
+                                                    <td>{{ $hasil->lokasi->nama_lokasi }}</td>
                                                     <td>{{ $hasil->keterangan_inventaris }}</td>
                                                     <td>
                                                         <div class="d-grid gap-2 d-md-block">

@@ -1,8 +1,10 @@
 @extends('layouts.kfd')
 
 @section('css')
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css"> --}}
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.5.6/css/buttons.dataTables.min.css">
+    {{-- <link rel="stylesheet" href="https://cdn.datatables.net/buttons/2.2.2/css/buttons.bootstrap4.min.css"> --}}
 
     {{-- <link rel="stylesheet" href="{{ ('html/demo/app/assets/css/export.css') }}"> --}}
 @endsection
@@ -56,21 +58,26 @@
                                 <table id="filterTable" class="table table-hover">
                                     <thead>
                                         <tr>
-                                            <th>Nama Barang</th>
-                                            <th>Kategori</th>
-                                            <th>Jumlah</th>
+                                            <th>No</th>
+                                            <th>Qty</th>
+                                            <th>Description</th>
+                                            <th>Merk - Detail Spec</th>
+                                            <th>Lokasi</th>
                                             <th>keterangan</th>
                                             <th>Tanggal</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($inventaris as $inven)
+                                        @foreach ($inventaris as $inven => $hasil)
                                             <tr>
-                                                <td>{{ $inven->nama_inventaris }}</td>
-                                                <td>{{ $inven->kategori->name }}</td>
-                                                <td>{{ $inven->qty_inventaris }}</td>
-                                                <td>{{ $inven->keterangan_inventaris }}</td>
-                                                <td>{{ $inven->created_at }}</td>
+                                                <th>{{ $inven + $inventaris->firstitem() }}</th>
+                                                {{-- <td>{{ $inven->id }}</td> --}}
+                                                <td>{{ $hasil->qty_inventaris }}</td>
+                                                <td>{{ $hasil->kategori->name }}</td>
+                                                <td>{{ $hasil->nama_inventaris }}</td>
+                                                <td>{{ $hasil->lokasi->nama_lokasi }}</td>
+                                                <td>{{ $hasil->keterangan_inventaris }}</td>
+                                                <td>{{ $hasil->created_at }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -89,7 +96,7 @@
 @endsection
 
 @push('scripts')
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js" type="text/javascript"></script>
+    <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/dataTables.buttons.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.flash.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js" type="text/javascript"></script>
@@ -114,6 +121,7 @@
                 data:function(d){
                     d._token = "{{csrf_token()}}",
                     d.kateg = $("#kateg").val(),
+                    d.lokasi = $("#lokasi").val(),
                     d.fromdate = $("#fromdate").val(),
                     d.todate = $("#todate").val()
                 }
@@ -121,7 +129,12 @@
             columns:[
                 {
                     "render":function(data, type, row, meta){
-                        return row.nama_inventaris
+                        return row.id
+                    }
+                },
+                {
+                    "render":function(data, type, row, meta){
+                        return row.qty_inventaris
                     }
                 },
                 {
@@ -131,7 +144,12 @@
                 },
                 {
                     "render":function(data, type, row, meta){
-                        return row.qty_inventaris
+                        return row.nama_inventaris
+                    }
+                },
+                {
+                    "render":function(data, type, row, meta){
+                        return row.lokasi.nama_lokasi
                     }
                 },
                 {
@@ -147,22 +165,22 @@
             ],
             dom: "Blfrtip",
             buttons: [
-                {
-                    text: 'csv',
-                    extend: 'csvHtml5',
-                },
+                // {
+                //     text: 'csv',
+                //     extend: 'csvHtml5',
+                // },
                 {
                     text: 'excel',
                     extend: 'excelHtml5',
                 },
-                {
-                    text: 'pdf',
-                    extend: 'pdfHtml5',
-                },
-                {
-                    text: 'print',
-                    extend: 'print',
-                },
+                // {
+                //     text: 'pdf',
+                //     extend: 'pdfHtml5',
+                // },
+                // {
+                //     text: 'print',
+                //     extend: 'print',
+                // },
             ],
             columnDefs: [{
                 orderable: false,

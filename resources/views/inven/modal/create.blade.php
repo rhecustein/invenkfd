@@ -80,6 +80,16 @@
                                                 @endforeach
                                             </select>
                                         </div>
+
+                                        <div class="mb-3">
+                                            <label>Lokasi</label>
+                                            <select class="form-control" name="id_lokasi">
+                                                <option holder>Pilih Lokasi</option>
+                                                @foreach ($lokasi as $result)
+                                                <option value="{{ $result->id }}"> {{ $result->nama_lokasi }} </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
             
                                         <div class="mb-3">
                                             <label for="">Jumlah</label>

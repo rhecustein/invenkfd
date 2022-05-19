@@ -20,9 +20,10 @@
                                     <table id="data-table" class="table table-hover">
                                         <thead>
                                             <tr>
-                                                <th>Nama Barang</th>
+                                                <th>Nama Inventaris</th>
                                                 <th>Kategori</th>
                                                 <th>Jumlah</th>
+                                                <th>Lokasi</th>
                                                 <th>keterangan</th>
                                                 <th>Dibuat Tanggal</th>
                                                 <th>Di Update Tanggal</th>
@@ -34,6 +35,7 @@
                                                     <td>{{ $hasil->nama_inventaris }}</td>
                                                     <td>{{ $hasil->kategori->name }}</td>
                                                     <td>{{ $hasil->qty_inventaris }}</td>
+                                                    <td>{{ $hasil->lokasi->nama_lokasi }}</td>
                                                     <td>{{ $hasil->keterangan_inventaris }}</td>
                                                     <td>{{ $hasil->created_at }}</td>
                                                     <td>{{ $hasil->updated_at }}</td>

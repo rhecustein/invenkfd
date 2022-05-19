@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventaris;
+use App\Models\Lokasi;
 use App\Models\Kategori;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -17,7 +18,8 @@ class InventarisController extends Controller
     {
         $inventaris = Inventaris::paginate(100000000000);
         $kategori = Kategori::get();
-        return view('inven.inventaris',compact('inventaris','kategori'));
+        $lokasi = Lokasi::get();
+        return view('inven.inventaris',compact('inventaris','kategori','lokasi'));
 
         // $inventaris = Inventaris::select('*')->with('kategori')->paginate(10);
         // return view('inven.inventaris', [
@@ -28,7 +30,8 @@ class InventarisController extends Controller
     public function create()
     {
         $kategori = Kategori::all();
-        return view('inven.create', compact('kategori'));
+        $lokasi = Lokasi::all();
+        return view('inven.create', compact('kategori','lokasi'));
     }
 
     public function store(Request $request)
@@ -38,6 +41,7 @@ class InventarisController extends Controller
             'nama_inventaris' => 'required',
             'qty_inventaris' => 'required',
             'id_kategori' => 'required',
+            'id_lokasi' => 'required',
             'keterangan_inventaris' => 'required'
         ]);
 
@@ -45,6 +49,7 @@ class InventarisController extends Controller
             'nama_inventaris' => $request->nama_inventaris,
             'qty_inventaris' => $request->qty_inventaris,
             'id_kategori' => $request->id_kategori,
+            'id_lokasi' => $request->id_lokasi,
             'slug' => Str::slug($request->nama_inventaris),
             'keterangan_inventaris' => $request->keterangan_inventaris,
         ]);
@@ -60,8 +65,9 @@ class InventarisController extends Controller
     public function edit($id)
     {
         $kategori = Kategori::all();
+        $lokasi = Lokasi::all();
         $inventaris = Inventaris::findorfail($id);
-        return view('inven.edit', compact('inventaris', 'kategori'));
+        return view('inven.edit', compact('inventaris', 'kategori','lokasi'));
     }
 
     public function update(Request $request,$id)
@@ -70,6 +76,7 @@ class InventarisController extends Controller
             'nama_inventaris' => 'required',
             'qty_inventaris' => 'required',
             'id_kategori' => 'required',
+            'id_lokasi' => 'required',
             'keterangan_inventaris' => 'required'
         ]);
 
@@ -79,6 +86,7 @@ class InventarisController extends Controller
             'nama_inventaris' => $request->nama_inventaris,
             'qty_inventaris' => $request->qty_inventaris,
             'id_kategori' => $request->id_kategori,
+            'id_lokasi' => $request->id_lokasi,
             'keterangan_inventaris' => $request->keterangan_inventaris,
             'slug' => Str::slug($request->name)
         ];

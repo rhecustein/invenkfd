@@ -23,7 +23,7 @@
                             <div class="card-body">
                                 <h2>Lokasi</h2>
                                 <hr>
-                                <a href="{{ route('lokasi.create') }}" class="btn btn-info">Tambah Lokasi</a>
+                                <a href="#"  data-toggle="modal" data-target="#ModalCreateLokasi" class="btn btn-info">Tambah Lokasi</a>
                                 <div class="mt-4">
                                     <div class="table-responsive">
                                         <table id="data-table" class="table table-hover">
@@ -61,6 +61,8 @@
         </div>
     </body>
 
+    @include('lokasi.modal.create')
+
 @endsection
 
 @push('scripts')
@@ -70,4 +72,11 @@
             $('#data-table').DataTable();
         } );
     </script>
+
+    @push('modal-scripts')
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    @endpush
+
 @endpush
