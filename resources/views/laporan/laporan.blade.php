@@ -51,17 +51,12 @@
                                     <div class="container mt-4 ">
                                         <a href="{{ route('laporan') }}" class="btn btn-warning">Reset Filter</a>
 
-                                        @if ($errors->has('file'))
-                                        <span classs="text-center">
-                                        <strong>{{ $error->first('file') }}</strong>
-                                        </span>
-                                        @endif
-                                        {{-- <a href="{{ route('exportlaporan') }}" class="btn btn-success">Export</a>
-                                        <a href="#" data-toggle="modal" data-target="#importModal"><button class="btn btn-primary me-2">Import</button></a> --}}
+                                        <!-- {{-- <a href="{{ route('exportlaporan') }}" class="btn btn-success">Export</a>
+                                        <a href="#" data-toggle="modal" data-target="#importModal"><button class="btn btn-primary me-2">Import</button></a> --}} -->
                                         <form action="{{ route('importlaporan') }}" method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="mt-4">
-                                                <input type="file" name="file" class="form-group">
+                                                <input type="file" name="dataimport" id="dataimport" class="form-group">
                                             </div>
                                             <br>
                                             <button type="submit" class="btn btn-success">Import User Data</button>

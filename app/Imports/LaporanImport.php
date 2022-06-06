@@ -3,11 +3,12 @@
 namespace App\Imports;
 
 use App\Models\Inventaris;
-use Maatwebsite\Excel\Concerns\ToModel;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Illuminate\Support\Collection;
+use Maatwebsite\Excel\Concerns\ToCollection;
+use Illuminate\Support\Facades\DB;
 
-// class LaporanImport implements ToModel, WithHeadingRow
-class LaporanImport implements WithHeadingRow
+// class LaporanImport implesments ToModel, WithHeadingRow
+class LaporanImport implements ToCollection
 {
     /**
     * @param array $row
@@ -19,9 +20,9 @@ class LaporanImport implements WithHeadingRow
 
     public function collection(Collection $rows)
     {
-        
         foreach ($rows as $row) 
         {
+            DB::beginTransaction();
             Inventaris::create([
                 'nama_inventaris' => $row[3],
                 'qty_inventaris' => $row[1],
@@ -32,21 +33,4 @@ class LaporanImport implements WithHeadingRow
             DB::commit();
         }
     }
-
-//         dd($row);
-//         return new Inventaris([
-//             'nama_inventaris' => $row[3],
-//             'qty_inventaris' => $row['qty'],
-//             'id_kategori' => $row[2],
-//             'id_lokasi' => $row[4],
-//             'keterangan_inventaris' => $row[5],
-
-//             'nama_inventaris' => $row['nama_inventaris'],
-//             'qty_inventaris' => $row[2],
-//             'id_kategori' => $row['id_kategori'],
-//             'id_lokasi' => $row['id_lokasi'],
-//             'keterangan_inventaris' => $row['keterangan_inventaris'],
-//         ]);
-//     }
-// }
 }

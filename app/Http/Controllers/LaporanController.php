@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Inventaris;
 use App\Models\Kategori;
 use App\Models\Lokasi;
-use Maatwebsite\Excel\Facades\Excel;
+use Excel;
 use App\Exports\LaporanExport;
-use App\Imports\LaporanImport;
+use App\Imports\LaporanImport as DataImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+
 
 class LaporanController extends Controller
 {
@@ -28,15 +29,26 @@ class LaporanController extends Controller
         return Excel::download(new LaporanExport, 'laporan.xlsx');
     }
 
-    public function laporanImport(Request $request)
+    public function laporanImport (Request $request)
     {
-        // $file = $request->file('file');
-        // $namaFile = $file->getClientOriginalName();
-        // $file->move('DataLaporan', $namaFile);
+        $this->validate($request, [
+            'dataimport' => 'required|mimes:csv,xls,xlsx'
+        ]);
 
-        Excel::import(new LaporanImport, request()->file('file'));
-        return redirect('laporan')->with('berhasil','data berhasil di import');
+        Excel::import(new DataImport, request()->file('dataimport'));
+
+        return redirect()->back()->with(['success' => 'Data berhasil diimport!']);
     }
+    // public function laporanImport(Request $request)
+    // {
+    //     // $file = $request->file('file');
+    //     // $namaFile = $file->getClientOriginalName();
+    //     // $file->move('DataLaporan', $namaFile);
+
+    //     Excel::import(new LaporanImport, request()->file('dataimport'));
+    //    dd('Import berhasil');
+    //     // return redirect('laporan')->with('berhasil','data berhasil di import');
+    // }
 
     // public function laporanImport(Request $request) 
 	// {
