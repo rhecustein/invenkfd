@@ -9,8 +9,13 @@
     {{-- <link rel="stylesheet" href="{{ ('html/demo/app/assets/css/export.css') }}"> --}}
 @endsection
 
+@section('modal-css')
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+@endsection
+
 @section('content')
 <body>
+    {{-- @dump($inventaris) --}}
     <div class="layout">
         <div class="horizontal-layout">
             <!-- Content START -->
@@ -45,11 +50,66 @@
 
                                     <div class="container mt-4 ">
                                         <a href="{{ route('laporan') }}" class="btn btn-warning">Reset Filter</a>
+
+                                        @if ($errors->has('file'))
+                                        <span classs="text-center">
+                                        <strong>{{ $error->first('file') }}</strong>
+                                        </span>
+                                        @endif
+                                        {{-- <a href="{{ route('exportlaporan') }}" class="btn btn-success">Export</a>
+                                        <a href="#" data-toggle="modal" data-target="#importModal"><button class="btn btn-primary me-2">Import</button></a> --}}
+                                        <form action="{{ route('importlaporan') }}" method="POST" enctype="multipart/form-data">
+                                            @csrf
+                                            <div class="mt-4">
+                                                <input type="file" name="file" class="form-group">
+                                            </div>
+                                            <br>
+                                            <button type="submit" class="btn btn-success">Import User Data</button>
+                                            <a class="btn btn-warning" href="{{ route('exportlaporan') }}">Export User Data</a>
+                                        </form>
                                     </div>
+
                                 </div>
                             </form>
                         </div>
                     </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade" id="importModal" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <h5 class="modal-title" id="exampleModalLabel">Import Data</h5>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+
+                            <form action="{{ route('importlaporan') }}" method="POST" enctype="multipart/form-data">
+
+                            <div class="modal-body">
+                                    @csrf
+                                    <div class="form-group">
+                                        <input type="file" name="file" required="required">
+                                    </div>
+
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        <button type="button" class="btn btn-primary">Import File</button>
+                                      </div>
+
+                            </div>
+                            {{-- <div class="modal-footer">
+                              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-primary">Import File</button>
+                            </div> --}}
+
+                        </form>
+
+                          </div>
+                        </div>
+                      </div>
+
                     <div class="card">
                         <div class="card-body">
                             <h2>Data Laporan</h2>
@@ -70,8 +130,8 @@
                                     <tbody>
                                         @foreach ($inventaris as $inven => $hasil)
                                             <tr>
-                                                <th>{{ $inven + $inventaris->firstitem() }}</th>
-                                                {{-- <td>{{ $inven->id }}</td> --}}
+                                                {{-- <th>{{ $inven + $inventaris->firstitem() }}</th> --}}
+                                                <td>{{ $hasil->id }}</td>
                                                 <td>{{ $hasil->qty_inventaris }}</td>
                                                 <td>{{ $hasil->kategori->name }}</td>
                                                 <td>{{ $hasil->nama_inventaris }}</td>
@@ -104,6 +164,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.html5.min.js" type="text/javascript"></script>
     <script src="https://cdn.datatables.net/buttons/1.6.5/js/buttons.print.min.js" type="text/javascript"></script>
+
+    @push('modal-scripts')
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    @endpush
 
     <script>
 

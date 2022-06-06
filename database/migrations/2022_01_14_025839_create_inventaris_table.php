@@ -15,11 +15,15 @@ class CreateInventarisTable extends Migration
     {
         Schema::create('inventaris', function (Blueprint $table) {
             $table->bigIncrements('id');
+            // $table->string('kode_equipment')->nullable();
             $table->string('nama_inventaris')->nullable();
             $table->bigInteger('qty_inventaris')->nullable();
             $table->string('id_kategori')->nullable();
             $table->string('id_lokasi')->nullable();
-            $table->string('keterangan_inventaris')->nullable();
+            $table->longText('keterangan_inventaris')->nullable();
+            // $table->integer('nilai_awal')->nullable();
+            // $table->integer('penyusutan')->nullable();
+            // $table->integer('nilai_akhir')->nullable(); nilai_akhir = nilai_awal - penyusutan
             $table->timestamps();
         });
     }

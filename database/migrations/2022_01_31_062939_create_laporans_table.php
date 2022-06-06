@@ -20,7 +20,7 @@ class CreateLaporansTable extends Migration
             $table->bigInteger('qty_inventaris')->nullable();
             $table->string('id_lokasi')->nullable();
             $table->string('id_kategori')->nullable();
-            $table->char('keterangan_inventaris')->nullable();
+            $table->longText('keterangan_inventaris')->nullable();
             $table->timestamps();
         });
     }

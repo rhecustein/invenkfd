@@ -11,6 +11,7 @@ use App\Http\Controllers\SettingController;
 use App\Http\Controllers\SupportController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LokasiController;
+use App\Http\Controllers\UploadController;
 use App\Models\User;
 Use Illuminate\Support\Facades\Auth;
 
@@ -97,7 +98,15 @@ Route::group(['middleware' => ['auth', 'ceklevel:admin,user']], function (){
 
     Route::post('laporan_filter', [LaporanController::class, 'laporanFilter']);
 
+    Route::get('/exportlaporan', [LaporanController::class, 'laporanExport'])->name('exportlaporan');
+
+    Route::post('/importlaporan', [LaporanController::class, 'laporanImport'])->name('importlaporan');
+
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+
+    Route::get('/upload', [UploadController::class, 'upload'])->name('upload');
+
+    Route::post('/upload/proses', [UploadController::class, 'proses_upload']);
 
 });
 

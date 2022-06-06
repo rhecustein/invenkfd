@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Inventaris;
 use App\Models\Kategori;
 use App\Models\Lokasi;
+use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\LaporanExport;
+use App\Imports\LaporanImport;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -13,12 +16,53 @@ class LaporanController extends Controller
 {
     public function index(Request $request)
     {
-        $inventaris = Inventaris::paginate(1000);
+        $inventaris = Inventaris::get();
         $kategori = Kategori::get();
         $lokasi = Lokasi::get(); 
 
         return view('laporan.laporan', compact('inventaris','kategori','lokasi'));
     }
+
+    public function laporanExport()
+    {
+        return Excel::download(new LaporanExport, 'laporan.xlsx');
+    }
+
+    public function laporanImport(Request $request)
+    {
+        // $file = $request->file('file');
+        // $namaFile = $file->getClientOriginalName();
+        // $file->move('DataLaporan', $namaFile);
+
+        Excel::import(new LaporanImport, request()->file('file'));
+        return redirect('laporan')->with('berhasil','data berhasil di import');
+    }
+
+    // public function laporanImport(Request $request) 
+	// {
+	// 	// validasi
+	// 	$this->validate($request, [
+	// 		'file' => 'required|mimes:csv,xls,xlsx'
+	// 	]);
+ 
+	// 	// menangkap file excel
+	// 	$file = $request->file('file');
+ 
+	// 	// membuat nama file unik
+	// 	$nama_file = rand().$file->getClientOriginalName();
+ 
+	// 	// upload ke folder file_siswa di dalam folder public
+	// 	$file->move('file_laporan',$nama_file);
+ 
+	// 	// import data
+	// 	Excel::import(new laporanImport, public_path('/file_laporan/'.$nama_file));
+ 
+	// 	// notifikasi dengan session
+	// 	Session::flash('sukses','Data Siswa Berhasil Diimport!');
+ 
+	// 	// alihkan halaman kembali
+	// 	return redirect('/laporan');
+	// }
 
     public function laporanFilter(Request $request)
     {
