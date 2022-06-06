@@ -24,9 +24,9 @@ class LaporanImport implements ToCollection
         {
             DB::beginTransaction();
             Inventaris::create([
-                'nama_inventaris' => $row[3],
-                'qty_inventaris' => $row[1],
-                'id_kategori' => $row[2],
+                'nama_inventaris' => $row[1],
+                'qty_inventaris' => $row[2],
+                'id_kategori' => $row[3],
                 'id_lokasi' => $row[4],
                 'keterangan_inventaris' => $row[5],
             ]);
